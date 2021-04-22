@@ -6,24 +6,18 @@ const apolloClient = new ApolloClient({
 });
 
 const cramToApi = function (imageURI: String): void {
-  const data = new FormData();
-  data.append('my_photo', {
-    uri: imageURI,
-    name: 'my_photo.jpg',
-    type: 'image/jpg'
-  })
-  console.log('data: ', data);
+  console.log('uri: ', imageURI);
   apolloClient.query({
     query: gql`
-      {
+	    {
 	      topics(input: {title: "Current"}) {
-		    id
-        url
-	      }
+          id
+        }
       }
-    `
+    `,
+    fetchPolicy: "network-only"
   }).then(result => console.log(result))
     .catch(err => console.error(err));
 }
 
-export { cramToApi, apolloClient}
+export { cramToApi, apolloClient }
