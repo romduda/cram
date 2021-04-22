@@ -1,0 +1,33 @@
+{
+  "name": "Cram",
+  "version": "1.0.0",
+  "description": "GCSE Revision tool",
+  "main": "src/index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "tsc && node dist/index.js",
+    "start-dev": "nodemon dist/index.js",
+    "seed": "tsc && node dist/seed/topic-seeder.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/raphaelj274/Cram.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/raphaelj274/Cram/issues"
+  },
+  "homepage": "https://github.com/raphaelj274/Cram#readme",
+  "dependencies": {
+    "apollo-server": "^2.23.0",
+    "graphql": "^15.5.0",
+    "mongoose": "^5.12.5",
+    "mongoose-seed": "^0.6.0",
+    "typescript": "^4.2.4"
+  },
+  "devDependencies": {
+    "ts-node": "^9.1.1"
+  }
+}
