@@ -4,7 +4,7 @@ import { Button } from 'react-native-elements';
 import { Camera } from 'expo-camera';
 import { ApolloProvider } from '@apollo/client/react';
 import { cramToApi, apolloClient } from '../Services/ApiService';
-// import { Video, AVPlaybackStatus } from 'expo-av';
+import { Video, AVPlaybackStatus } from 'expo-av';
 
 export default function Main () {
   const [hasPermission, setHasPermission] = useState(false);
@@ -15,7 +15,7 @@ export default function Main () {
   const [videoModal, setVideoModel] = useState(false);
   const [videoURL, setVideoURL] = useState('');
   const video = React.useRef(null);
-  const [status, setStatus] = useState({});
+  const [status, setStatus] = useState<AVPlaybackStatus|null>(null);
 
   useEffect(() => {
     (async () => {
@@ -92,30 +92,30 @@ export default function Main () {
           transparent={false}
           visible={videoModal}
         >
-          {/* <View style={styles.videoContainer}>
-            <Video
-              ref={video}
-              style={styles.video}
-              source={{
-                uri: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4',
-              }}
-              useNativeControls
-              resizeMode="contain"
-              isLooping
-              onPlaybackStatusUpdate={status => setStatus(() => status)}
-            />
-            <View style={styles.videoButtons}>
-              <Button
-                title={status.isPlaying ? 'Pause' : 'Play'}
-                onPress={() =>
-                  status.isPlaying ? video.current.pauseAsync() : video.current.playAsync()
-                }
-              />
-            </View>
-          </View> */}
           <View style={styles.videoContainer}>
             <Text style={styles.videoTitle}>Crammed</Text>
-            <Text style={styles.video}>{videoURL}</Text>
+            <View style={styles.videoContainer}>
+              <Video
+                ref={video}
+                style={styles.video}
+                source={{
+                  uri: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4',
+                }}
+                useNativeControls
+                resizeMode="contain"
+                isLooping
+                onPlaybackStatusUpdate={status => setStatus(() => status)}
+              />
+              {/* <View style={styles.videoButtons}>
+                <Button
+                  title={status && status.isPlaying ? 'Pause' : 'Play'}
+                  onPress={() =>
+                    status && status.isPlaying ? video.current?.pauseAsync() : video.current?.playAsync()
+                  }
+                />
+              </View> */}
+            </View>
+            {/* <Text style={styles.text}>{videoURL}</Text> */}
             <Button
               title = "Cram again?"
               onPress={() => setVideoModel(false)}
@@ -184,6 +184,10 @@ const styles = StyleSheet.create({
   },
   video: {
     textAlign: 'center',
+    alignSelf: 'center',
+    borderWidth: 1,
+    width: 300,
+    height: 300
   },
   videoButtons: {
 
@@ -191,5 +195,5 @@ const styles = StyleSheet.create({
   videoTitle: {
     textAlign: 'center',
     fontSize: 30
-  }
+  },
 });
