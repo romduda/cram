@@ -7,7 +7,7 @@ const apolloClient = new ApolloClient({
 });
 
 const cramToApi = async function (imageURI: string): Promise<void> {
-  console.log('uri: ', imageURI);
+  console.log('request made');
   const imgBase64 = await pathToBase64(imageURI);
   apolloClient.query({
     query: gql`

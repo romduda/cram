@@ -1,5 +1,5 @@
 import { Topic } from './models/topics';
-// import magic from './magic';
+import magic from './magic';
 import visionApi from './visionApi';
 
 export const resolvers = {
@@ -8,10 +8,9 @@ export const resolvers = {
       const { input } = args;
       console.log('in the backend now');
       const googleStr = await visionApi(input.title);
-      // const output = magic(input);
-      console.log(googleStr);
-      const hardCode = {title: "Current"}
-      return await Topic.find(hardCode).exec();
+      if (!googleStr) return await Topic.find({title: 'Error'}).exec();
+      const topicTitle = magic(googleStr);
+      return await Topic.find(topicTitle).exec();
     }
   },
 };

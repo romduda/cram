@@ -6,6 +6,10 @@ const seedDb = async () => {
 
   const topics = [
     new Topic({
+      title: 'Error',
+      url: 'Sorry text not recognised, please try again'
+    }),
+    new Topic({
       title: 'Electromagnets',
       url: 'https://www.youtube.com/watch?v=V30Rpqi6kYE'
     }),
