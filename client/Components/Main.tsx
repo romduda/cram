@@ -4,6 +4,7 @@ import { Button } from 'react-native-elements';
 import { Camera } from 'expo-camera';
 import { ApolloProvider } from '@apollo/client/react';
 import { cramToApi, apolloClient } from '../Services/ApiService';
+// import { Video, AVPlaybackStatus } from 'expo-av';
 
 export default function Main () {
   const [hasPermission, setHasPermission] = useState(false);
@@ -13,6 +14,8 @@ export default function Main () {
   const [type, setType] = useState(Camera.Constants.Type.back);
   const [videoModal, setVideoModel] = useState(false);
   const [videoURL, setVideoURL] = useState('');
+  const video = React.useRef(null);
+  const [status, setStatus] = useState({});
 
   useEffect(() => {
     (async () => {
@@ -89,15 +92,35 @@ export default function Main () {
           transparent={false}
           visible={videoModal}
         >
-        <View style={styles.imageModal}>
-          <View style={styles.imageContainer}>
-            <Image source={{uri:videoURL}} style={styles.image}/>
-            <Button
-              title = "Exit"
-              onPress={() => setVideoModel(false)}
+          {/* <View style={styles.videoContainer}>
+            <Video
+              ref={video}
+              style={styles.video}
+              source={{
+                uri: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4',
+              }}
+              useNativeControls
+              resizeMode="contain"
+              isLooping
+              onPlaybackStatusUpdate={status => setStatus(() => status)}
             />
-          </View>
-        </View>
+            <View style={styles.videoButtons}>
+              <Button
+                title={status.isPlaying ? 'Pause' : 'Play'}
+                onPress={() =>
+                  status.isPlaying ? video.current.pauseAsync() : video.current.playAsync()
+                }
+              />
+            </View>
+          </View> */}
+          <View style={styles.videoContainer}>
+            <Text style={styles.videoTitle}>Crammed</Text>
+            <Text style={styles.video}>{videoURL}</Text>
+            <Button
+              title = "Cram again?"
+              onPress={() => setVideoModel(false)}
+              />
+            </View>
         </Modal>
       </View>
     // </ApolloProvider>
@@ -152,5 +175,21 @@ const styles = StyleSheet.create({
   buttonsFlex: {
     flexDirection: "row",
     justifyContent: "space-between"
+  },
+  videoContainer: {
+    padding: 50,
+    display: 'flex',
+    justifyContent: 'space-between',
+    flex: 1
+  },
+  video: {
+    textAlign: 'center',
+  },
+  videoButtons: {
+
+  },
+  videoTitle: {
+    textAlign: 'center',
+    fontSize: 30
   }
 });

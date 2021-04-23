@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "expo-av": "^9.1.2",
+    "react-native-video": "^5.1.1"
+  },
+  "devDependencies": {
+    "@types/react-native-video": "^5.0.4"
+  }
+}
