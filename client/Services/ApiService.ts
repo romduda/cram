@@ -6,10 +6,10 @@ const apolloClient = new ApolloClient({
   cache: new InMemoryCache()
 });
 
-const cramToApi = async function (imageURI: string): Promise<void> {
+const cramToApi = async function (imageURI: string): Promise<any> {
   console.log('request made');
   const imgBase64 = await pathToBase64(imageURI);
-  apolloClient.query({
+  return apolloClient.query({
     query: gql`
 	    {
 	      topics(input: {title: "${imgBase64}"}) {
@@ -18,7 +18,10 @@ const cramToApi = async function (imageURI: string): Promise<void> {
       }
     `,
     fetchPolicy: "network-only"
-  }).then(result => console.log('heres the url! : ', result.data.topics[0].url))
+  }).then(result => {
+    console.log('heres the url! : ', result.data.topics[0].url);
+    return result.data.topics[0].url;
+  })
     .catch(err => console.error(err));
 }
 

@@ -13,7 +13,7 @@ export const Home = ({ navigation }:any) => {
         title="Login"
         style={styles.btn}
         onPress={() => {
-          navigation.push('Screen2', { paramA: 'Hello!' })
+          navigation.push('Cram', { paramA: 'Hello!' })
         }}
       />
     </View>

@@ -3,14 +3,16 @@ import { StyleSheet, Text, View, Image, Modal } from 'react-native';
 import { Button } from 'react-native-elements';
 import { Camera } from 'expo-camera';
 import { ApolloProvider } from '@apollo/client/react';
-import { cramToApi, apolloClient } from './Services/ApiService';
+import { cramToApi, apolloClient } from '../Services/ApiService';
 
-export default function App() {
+export default function Main () {
   const [hasPermission, setHasPermission] = useState(false);
   const [camera, setCamera] = useState<Camera|null>(null);
   const [imageURI, setImageURI] = useState('');
   const [modalVisible, setModelVisible] = useState(false);
   const [type, setType] = useState(Camera.Constants.Type.back);
+  const [videoModal, setVideoModel] = useState(false);
+  const [videoURL, setVideoURL] = useState('');
 
   useEffect(() => {
     (async () => {
@@ -35,7 +37,7 @@ export default function App() {
   }
 
   return (
-    <ApolloProvider client={apolloClient}>
+    // <ApolloProvider client={apolloClient}>
       <View style={styles.bigContainer}>
         <View style={styles.container}>
           <Camera
@@ -59,7 +61,7 @@ export default function App() {
           onPress={() => takePicture()}
         />
         <Modal
-          transparent={true}
+          transparent={false}
           visible={modalVisible}
         >
         <View style={styles.imageModal}>
@@ -72,17 +74,33 @@ export default function App() {
               />
               <Button
                 title = "Cram!"
-                onPress={() => {
-                  cramToApi(imageURI);
-                  return setModelVisible(false);
+                onPress={async () => {
+                  const videoURL = await cramToApi(imageURI);
+                  setVideoURL(videoURL);
+                  setModelVisible(false);
+                  return setVideoModel(true);
                 }}
               />
             </View>
           </View>
         </View>
         </Modal>
+        <Modal
+          transparent={false}
+          visible={videoModal}
+        >
+        <View style={styles.imageModal}>
+          <View style={styles.imageContainer}>
+            <Image source={{uri:videoURL}} style={styles.image}/>
+            <Button
+              title = "Exit"
+              onPress={() => setVideoModel(false)}
+            />
+          </View>
+        </View>
+        </Modal>
       </View>
-    </ApolloProvider>
+    // </ApolloProvider>
   );
 }
 
