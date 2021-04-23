@@ -5,9 +5,16 @@ async function visionApi(url:string):Promise<any> {
   const client = new vision.ImageAnnotatorClient({
     keyFilename: 'src/apiKey.json'
   });
+  console.log('sending to google');
 
+  const request = {
+    image: {
+      content: Buffer.from(url, 'base64')
+    }
+  };
   // Performs label detection on the image file
-  const result = await client.textDetection(url);
+  const result = await client.textDetection(request);
+  console.log(result);
   const googleStr = result[0].fullTextAnnotation?.text;
   console.log('google retrieved: ', googleStr);
 }

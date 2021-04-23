@@ -9,17 +9,16 @@ const apolloClient = new ApolloClient({
 const cramToApi = async function (imageURI: string): Promise<void> {
   console.log('uri: ', imageURI);
   const imgBase64 = await pathToBase64(imageURI);
-  console.log('heres the encoded: ', imgBase64);
   apolloClient.query({
     query: gql`
 	    {
-	      topics(input: {title: "Currednt"}) {
-          id
+	      topics(input: {title: "${imgBase64}"}) {
+          url
         }
       }
     `,
     fetchPolicy: "network-only"
-  }).then(result => console.log(result))
+  }).then(result => console.log('heres the url! : ', result.data.topics[0].url))
     .catch(err => console.error(err));
 }
 
