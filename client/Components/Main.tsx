@@ -80,7 +80,7 @@ export default function Main ({ navigation }: any) {
                 const topic = await cramToApi(imageURI);
                 setTopic(topic);
                 setModelVisible(false);
-                return navigation.push('Result', { paramC: topic })
+                return navigation.push('Crammed', { paramC: topic })
               }}
             />
           </View>

@@ -4,7 +4,7 @@ import { Button } from 'react-native-elements';
 import { WebView } from 'react-native-webview';
 import { useNavigation } from '@react-navigation/native';
 
-export const Result = ({ route }:any) => {
+export const Crammed = ({ route }:any) => {
   const topic = route.params.paramC;
   const videoURL = topic.url;
   const navigation = useNavigation();
