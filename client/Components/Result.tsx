@@ -3,10 +3,13 @@ import { StackScreenProps } from '@react-navigation/stack';
 import { StyleSheet, Text, View, ScrollView, TouchableOpacity } from 'react-native';
 import { Button } from 'react-native-elements';
 import { WebView } from 'react-native-webview';
+import { useNavigation, useRoute, RouteProp } from '@react-navigation/native';
+import { StackNavigationProp } from '@react-navigation/stack';
 
 export const Result = ({ route }:any) => {
   const topic = route.params.paramC;
   const videoURL = topic.url;
+  const navigation = useNavigation();
   return (
     <View style={styles.container}>
       <ScrollView style= {styles.scroll}>
@@ -29,7 +32,7 @@ export const Result = ({ route }:any) => {
         <Button
           title = "Cram again?"
           onPress={() => {
-            route.history.pop();
+            navigation.pop();
           }}
         />
     </View>
