@@ -1,10 +1,8 @@
 import React from 'react';
-import { StackScreenProps } from '@react-navigation/stack';
 import { StyleSheet, Text, View, ScrollView, TouchableOpacity } from 'react-native';
 import { Button } from 'react-native-elements';
 import { WebView } from 'react-native-webview';
-import { useNavigation, useRoute, RouteProp } from '@react-navigation/native';
-import { StackNavigationProp } from '@react-navigation/stack';
+import { useNavigation } from '@react-navigation/native';
 
 export const Result = ({ route }:any) => {
   const topic = route.params.paramC;

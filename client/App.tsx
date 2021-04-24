@@ -6,7 +6,9 @@ import { Result } from './Components/Result';
 import { NavigationContainer } from '@react-navigation/native';
 import { ApolloProvider } from '@apollo/client/react';
 import { cramToApi, apolloClient } from './Services/ApiService';
+import { Button } from 'react-native'
 import Topic from './Interfaces/Topic';
+import HeaderBtn from './Components/HeaderBtn';
 
 type RootParamList = {
   Home: { paramA:  string }
@@ -21,9 +23,9 @@ export default function App() {
     <ApolloProvider client={apolloClient}>
     <NavigationContainer>
       <Root.Navigator initialRouteName="Home" >
-        <Root.Screen name="Home" component={Home} />
-        <Root.Screen name="Cram" component={Cram} />
-        <Root.Screen name="Result" component={Result} />
+        <Root.Screen name="Home" component={Home} options={{ headerRight: () => <HeaderBtn/> }}/>
+        <Root.Screen name="Cram" component={Cram} options={{ headerRight: () => <HeaderBtn/> }}/>
+        <Root.Screen name="Result" component={Result} options={{ headerRight: () => <HeaderBtn/> }} />
       </Root.Navigator>
     </NavigationContainer>
     </ApolloProvider>

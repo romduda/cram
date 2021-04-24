@@ -3,7 +3,6 @@ import { StyleSheet, Text, View, Image, Modal, ScrollView, TouchableOpacity } fr
 import { Button } from 'react-native-elements';
 import { Camera } from 'expo-camera';
 import { cramToApi, apolloClient } from '../Services/ApiService';
-import { WebView } from 'react-native-webview';
 import Topic from '../Interfaces/Topic';
 
 export default function Main ({ navigation }: any) {
@@ -47,6 +46,7 @@ export default function Main ({ navigation }: any) {
       </View>
       <Button
         title= "Flip Camera"
+        type="outline"
         onPress={() => {
           setType(
             type === Camera.Constants.Type.back
@@ -57,6 +57,7 @@ export default function Main ({ navigation }: any) {
       </Button>
       <Button
         title="Take Picture"
+        type="outline"
         onPress={() => takePicture()}
       />
       <Modal
@@ -69,10 +70,12 @@ export default function Main ({ navigation }: any) {
           <View style={styles.buttonsFlex}>
             <Button
               title = "Retake Image"
+              type="outline"
               onPress={() => setModelVisible(false)}
             />
             <Button
               title = "Cram!"
+              type="outline"
               onPress={async () => {
                 const topic = await cramToApi(imageURI);
                 setTopic(topic);
