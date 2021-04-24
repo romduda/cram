@@ -4,8 +4,9 @@ import { Button } from 'react-native-elements';
 import { Camera } from 'expo-camera';
 import { cramToApi, apolloClient } from '../Services/ApiService';
 import { WebView } from 'react-native-webview';
+import Topic from '../Interfaces/Topic';
 
-export default function Main () {
+export default function Main ({ navigation }: any) {
   const [hasPermission, setHasPermission] = useState(false);
   const [camera, setCamera] = useState<Camera|null>(null);
   const [imageURI, setImageURI] = useState('');
@@ -13,7 +14,7 @@ export default function Main () {
   const [type, setType] = useState(Camera.Constants.Type.back);
   const [videoModal, setVideoModel] = useState(false);
   const [videoURL, setVideoURL] = useState('');
-  const [topic, setTopic] = useState(null);
+  const [topic, setTopic] = useState<Topic|null>(null);
 
   useEffect(() => {
     (async () => {
@@ -80,7 +81,8 @@ export default function Main () {
                 const videoURL = topic.url;
                 setVideoURL(videoURL);
                 setModelVisible(false);
-                return setVideoModel(true);
+                // setVideoModel(true);
+                return navigation.push('Result', { paramC: topic })
               }}
             />
           </View>
@@ -166,6 +168,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between"
   },
+  // from here - take out as now in result.ts?
   videoContainer: {
     padding: 50,
     display: 'flex',

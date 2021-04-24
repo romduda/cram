@@ -6,7 +6,7 @@ import Main from './Main';
 
 export const Cram = ({ navigation }:any) => {
   return (
-    <Main/>
+    <Main navigation={navigation}/>
   )
 }
 
