@@ -8,6 +8,14 @@ const magic = function (str: string): {title: string} {
     })
     return score;
   })
+  console.log('scores: ', scores);
+  console.log('Math.max(...scores): ', Math.max(...scores));
+  if (Math.max(...scores) === 0) {
+    const topic = {
+      title: 'Not Found'
+    }
+    return topic
+  }
   const topicTitle = topicTitles[scores.indexOf(Math.max(...scores))];
   const topic = {
     title: topicTitle

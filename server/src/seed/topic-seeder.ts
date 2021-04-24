@@ -11,6 +11,11 @@ const seedDb = async () => {
       related: []
     }),
     new Topic({
+      title: 'Not Found',
+      url: 'Sorry no materials available at present. Check out some of the other available materials!',
+      related: ['Koa', 'Node', 'Express']
+    }),
+    new Topic({
       title: 'Express',
       url: 'https://www.youtube.com/watch?v=L72fhGm1tfE',
       related: ['Koa', 'Node']
