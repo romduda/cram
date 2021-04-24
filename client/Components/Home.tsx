@@ -11,6 +11,7 @@ export const Home = ({ navigation }:any) => {
       >CRAM BABY CRAM</Text>
       <Button
         title="Login"
+        type="outline"
         style={styles.btn}
         onPress={() => {
           navigation.push('Cram', { paramA: 'Hello!' })
