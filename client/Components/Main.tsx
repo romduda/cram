@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View, Image, Modal } from 'react-native';
+import { StyleSheet, Text, View, Image, Modal, ScrollView } from 'react-native';
 import { Button } from 'react-native-elements';
 import { Camera } from 'expo-camera';
 import { ApolloProvider } from '@apollo/client/react';
 import { cramToApi, apolloClient } from '../Services/ApiService';
 import { Video, AVPlaybackStatus } from 'expo-av';
+import { WebView } from 'react-native-webview';
 
 export default function Main () {
   const [hasPermission, setHasPermission] = useState(false);
@@ -92,35 +93,16 @@ export default function Main () {
           transparent={false}
           visible={videoModal}
         >
-          <View style={styles.videoContainer}>
-            <Text style={styles.videoTitle}>Crammed</Text>
+          <ScrollView style= {styles.scroll}>
             <View style={styles.videoContainer}>
-              <Video
-                ref={video}
-                style={styles.video}
-                source={{
-                  uri: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4',
-                }}
-                useNativeControls
-                resizeMode="contain"
-                isLooping
-                onPlaybackStatusUpdate={status => setStatus(() => status)}
-              />
-              {/* <View style={styles.videoButtons}>
-                <Button
-                  title={status && status.isPlaying ? 'Pause' : 'Play'}
-                  onPress={() =>
-                    status && status.isPlaying ? video.current?.pauseAsync() : video.current?.playAsync()
-                  }
+              <Text style={styles.videoTitle}>Crammed</Text>
+              <WebView source={{ uri: videoURL }} style={{ margin: 20, padding: 50, width: 300, flex:1, overflow: 'hidden', borderWidth: 1, }} />
+              <Button
+                title = "Cram again?"
+                onPress={() => setVideoModel(false)}
                 />
-              </View> */}
             </View>
-            {/* <Text style={styles.text}>{videoURL}</Text> */}
-            <Button
-              title = "Cram again?"
-              onPress={() => setVideoModel(false)}
-              />
-            </View>
+          </ScrollView>
         </Modal>
       </View>
     // </ApolloProvider>
@@ -180,14 +162,9 @@ const styles = StyleSheet.create({
     padding: 50,
     display: 'flex',
     justifyContent: 'space-between',
-    flex: 1
-  },
-  video: {
-    textAlign: 'center',
-    alignSelf: 'center',
-    borderWidth: 1,
-    width: 300,
-    height: 300
+    flex: 1,
+    alignItems: 'center',
+    height: 600
   },
   videoButtons: {
 
@@ -196,4 +173,8 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: 30
   },
+  scroll: {
+    display: 'flex',
+    flex: 1,
+  }
 });
