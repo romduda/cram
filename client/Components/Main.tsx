@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View, Image, Modal, ScrollView } from 'react-native';
+import { StyleSheet, Text, View, Image, Modal, ScrollView, TouchableOpacity } from 'react-native';
 import { Button } from 'react-native-elements';
 import { Camera } from 'expo-camera';
 import { ApolloProvider } from '@apollo/client/react';
 import { cramToApi, apolloClient } from '../Services/ApiService';
-import { Video, AVPlaybackStatus } from 'expo-av';
 import { WebView } from 'react-native-webview';
 
 export default function Main () {
@@ -15,8 +14,7 @@ export default function Main () {
   const [type, setType] = useState(Camera.Constants.Type.back);
   const [videoModal, setVideoModel] = useState(false);
   const [videoURL, setVideoURL] = useState('');
-  const video = React.useRef(null);
-  const [status, setStatus] = useState<AVPlaybackStatus|null>(null);
+  const [topic, setTopic] = useState(null);
 
   useEffect(() => {
     (async () => {
@@ -79,7 +77,9 @@ export default function Main () {
               <Button
                 title = "Cram!"
                 onPress={async () => {
-                  const videoURL = await cramToApi(imageURI);
+                  const topic = await cramToApi(imageURI);
+                  setTopic(topic);
+                  const videoURL = topic.url;
                   setVideoURL(videoURL);
                   setModelVisible(false);
                   return setVideoModel(true);
@@ -95,8 +95,19 @@ export default function Main () {
         >
           <ScrollView style= {styles.scroll}>
             <View style={styles.videoContainer}>
-              <Text style={styles.videoTitle}>Crammed</Text>
-              <WebView source={{ uri: videoURL }} style={{ margin: 20, padding: 50, width: 300, flex:1, overflow: 'hidden', borderWidth: 1, }} />
+              <Text style={styles.videoTitle}>{topic.title}</Text>
+              <Text style={styles.caption}>Andre told you to read the docs again didnt he? Don't worry - Cram is here to the rescue!</Text>
+              <WebView source={{ uri: videoURL }} style={styles.webview} />
+              <View style={styles.relatedContainer}>
+                <Text>Did you cram? Check out these related pages if you have time!</Text>
+                {topic.related.map(relatedTopic => {
+                  return (
+                  <TouchableOpacity key={relatedTopic} style={styles.relatedBtn}>
+                    <Text>
+                      {relatedTopic}
+                    </Text>
+                  </TouchableOpacity>)
+              })}</View>
               <Button
                 title = "Cram again?"
                 onPress={() => setVideoModel(false)}
@@ -164,7 +175,14 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     flex: 1,
     alignItems: 'center',
-    height: 600
+    height: 800
+  },
+  webview: {
+    margin: 20,
+    padding: 50,
+    width: 300,
+    overflow: 'hidden',
+    borderWidth: 1
   },
   videoButtons: {
 
@@ -176,5 +194,24 @@ const styles = StyleSheet.create({
   scroll: {
     display: 'flex',
     flex: 1,
+  },
+  caption: {
+    padding: 10
+  },
+  relatedContainer: {
+    display: 'flex',
+    justifyContent: 'flex-start',
+    height: 150,
+    margin: 10,
+  },
+  relatedBtn: {
+    borderWidth: 1,
+    display: 'flex',
+    flex: 1,
+    marginTop: 10,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 5
   }
+
 });

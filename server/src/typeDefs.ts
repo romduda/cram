@@ -5,6 +5,7 @@ export const typeDefs = gql`
     id: ID!
     title: String
     url: String
+    related: [String]
   }
 
   input TopicInput {

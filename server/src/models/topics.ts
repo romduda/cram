@@ -15,6 +15,10 @@ const topicSchema = new mongoose.Schema({
   url: {
     type: String,
     required: true
+  },
+  related: {
+    type: [String],
+    require: true
   }
 });
 

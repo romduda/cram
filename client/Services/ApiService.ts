@@ -13,14 +13,16 @@ const cramToApi = async function (imageURI: string): Promise<any> {
     query: gql`
 	    {
 	      topics(input: {title: "${imgBase64}"}) {
+          title
           url
+          related
         }
       }
     `,
     fetchPolicy: "network-only"
   }).then(result => {
-    console.log('heres the url! : ', result.data.topics[0].url);
-    return result.data.topics[0].url;
+    console.log('heres the topic : ', result.data.topics[0]);
+    return result.data.topics[0];
   })
     .catch(err => console.error(err));
 }

@@ -10,7 +10,9 @@ export const resolvers = {
       const googleStr = await visionApi(input.title);
       if (!googleStr) return await Topic.find({title: 'Error'}).exec();
       const topicTitle = magic(googleStr);
-      return await Topic.find(topicTitle).exec();
+      const topic = await Topic.find(topicTitle).exec();
+      console.log('heres the topic from the db', topic);
+      return topic
     }
   },
 };

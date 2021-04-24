@@ -1,5 +1,5 @@
 const magic = function (str: string): {title: string} {
-  const topicTitles: Array<string> = ['Current', 'Electromagnets'];
+  const topicTitles: Array<string> = ['Koa', 'Express'];
   const arrOfWords: Array <string> = str.split('\n');
   const scores = topicTitles.map(topic => {
     let score: number = 0;

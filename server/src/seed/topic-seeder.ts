@@ -7,15 +7,18 @@ const seedDb = async () => {
   const topics = [
     new Topic({
       title: 'Error',
-      url: 'Sorry text not recognised, please try again'
+      url: 'Sorry text not recognised, please try again',
+      related: []
     }),
     new Topic({
-      title: 'Electromagnets',
-      url: 'https://www.youtube.com/watch?v=V30Rpqi6kYE'
+      title: 'Express',
+      url: 'https://www.youtube.com/watch?v=L72fhGm1tfE',
+      related: ['Koa', 'Node']
     }),
     new Topic({
-      title: 'Current',
-      url: 'https://www.youtube.com/watch?v=YFkJGEefgU8'
+      title: 'Koa',
+      url: 'https://www.youtube.com/watch?v=z84uTk5zmak',
+      related: ['Express', 'Node']
     })
   ];
 
