@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, Image, Modal, ScrollView, TouchableOpacity } from 'react-native';
 import { Button } from 'react-native-elements';
 import { Camera } from 'expo-camera';
-import { ApolloProvider } from '@apollo/client/react';
 import { cramToApi, apolloClient } from '../Services/ApiService';
 import { WebView } from 'react-native-webview';
 
@@ -39,84 +38,82 @@ export default function Main () {
   }
 
   return (
-    // <ApolloProvider client={apolloClient}>
-      <View style={styles.bigContainer}>
-        <View style={styles.container}>
-          <Camera
-            ref={ref=> setCamera(ref)}
-            style={styles.camera}
-            type={type}/>
+    <View style={styles.bigContainer}>
+      <View style={styles.container}>
+        <Camera
+          ref={ref=> setCamera(ref)}
+          style={styles.camera}
+          type={type}/>
 
-        </View>
-        <Button
-          title= "Flip Camera"
-          onPress={() => {
-            setType(
-              type === Camera.Constants.Type.back
-                ? Camera.Constants.Type.front
-                : Camera.Constants.Type.back
-            );
-          }}>
-        </Button>
-        <Button
-          title="Take Picture"
-          onPress={() => takePicture()}
-        />
-        <Modal
-          transparent={false}
-          visible={modalVisible}
-        >
-        <View style={styles.imageModal}>
-          <View style={styles.imageContainer}>
-            <Image source={{uri:imageURI}} style={styles.image}/>
-            <View style={styles.buttonsFlex}>
-              <Button
-                title = "Retake Image"
-                onPress={() => setModelVisible(false)}
-              />
-              <Button
-                title = "Cram!"
-                onPress={async () => {
-                  const topic = await cramToApi(imageURI);
-                  setTopic(topic);
-                  const videoURL = topic.url;
-                  setVideoURL(videoURL);
-                  setModelVisible(false);
-                  return setVideoModel(true);
-                }}
-              />
-            </View>
+      </View>
+      <Button
+        title= "Flip Camera"
+        onPress={() => {
+          setType(
+            type === Camera.Constants.Type.back
+              ? Camera.Constants.Type.front
+              : Camera.Constants.Type.back
+          );
+        }}>
+      </Button>
+      <Button
+        title="Take Picture"
+        onPress={() => takePicture()}
+      />
+      <Modal
+        transparent={false}
+        visible={modalVisible}
+      >
+      <View style={styles.imageModal}>
+        <View style={styles.imageContainer}>
+          <Image source={{uri:imageURI}} style={styles.image}/>
+          <View style={styles.buttonsFlex}>
+            <Button
+              title = "Retake Image"
+              onPress={() => setModelVisible(false)}
+            />
+            <Button
+              title = "Cram!"
+              onPress={async () => {
+                const topic = await cramToApi(imageURI);
+                setTopic(topic);
+                const videoURL = topic.url;
+                setVideoURL(videoURL);
+                setModelVisible(false);
+                return setVideoModel(true);
+              }}
+            />
           </View>
         </View>
-        </Modal>
-        <Modal
-          transparent={false}
-          visible={videoModal}
-        >
-          <ScrollView style= {styles.scroll}>
-            <View style={styles.videoContainer}>
-              <Text style={styles.videoTitle}>{topic.title}</Text>
-              <Text style={styles.caption}>Andre told you to read the docs again didnt he? Don't worry - Cram is here to the rescue!</Text>
-              <WebView source={{ uri: videoURL }} style={styles.webview} />
-              <View style={styles.relatedContainer}>
-                <Text>Did you cram? Check out these related pages if you have time!</Text>
-                {topic.related.map(relatedTopic => {
-                  return (
-                  <TouchableOpacity key={relatedTopic} style={styles.relatedBtn}>
-                    <Text>
-                      {relatedTopic}
-                    </Text>
-                  </TouchableOpacity>)
-              })}</View>
-              <Button
-                title = "Cram again?"
-                onPress={() => setVideoModel(false)}
-                />
-            </View>
-          </ScrollView>
-        </Modal>
       </View>
-    // </ApolloProvider>
+      </Modal>
+      <Modal
+        transparent={false}
+        visible={videoModal}
+      >
+        <ScrollView style= {styles.scroll}>
+          <View style={styles.videoContainer}>
+            <Text style={styles.videoTitle}>{topic && topic.title}</Text>
+            <Text style={styles.caption}>Andre told you to read the docs again didnt he? Don't worry - Cram is here to the rescue!</Text>
+            <WebView source={{ uri: videoURL }} style={styles.webview} />
+            <View style={styles.relatedContainer}>
+              <Text>Did you cram? Check out these related pages if you have time!</Text>
+              {topic && topic.related.map(relatedTopic => {
+                return (
+                <TouchableOpacity key={relatedTopic} style={styles.relatedBtn}>
+                  <Text>
+                    {relatedTopic}
+                  </Text>
+                </TouchableOpacity>)
+            })}</View>
+            <Button
+              title = "Cram again?"
+              onPress={() => setVideoModel(false)}
+              />
+          </View>
+        </ScrollView>
+      </Modal>
+    </View>
   );
 }
 

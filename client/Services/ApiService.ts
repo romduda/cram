@@ -2,7 +2,7 @@ import { ApolloClient, InMemoryCache, gql } from '@apollo/client';
 import pathToBase64 from './ImageService';
 
 const apolloClient = new ApolloClient({
-  uri: 'http://10.153.108.57:4000/',
+  uri: 'http://10.10.22.223:4000/',
   cache: new InMemoryCache()
 });
 
