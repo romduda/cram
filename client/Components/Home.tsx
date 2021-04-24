@@ -8,7 +8,7 @@ export const Home = ({ navigation }:any) => {
     <View style={styles.container}>
       <Text
       style={styles.home}
-      >Home</Text>
+      >CRAM BABY CRAM</Text>
       <Button
         title="Login"
         style={styles.btn}
@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between'
   },
   home: {
-    backgroundColor: 'orange',
+    // backgroundColor: 'orange',
     padding: 50,
     textAlign: 'center',
     flex: 1

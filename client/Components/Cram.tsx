@@ -9,14 +9,3 @@ export const Cram = ({ navigation }:any) => {
     <Main navigation={navigation}/>
   )
 }
-
-{/* <View>
-      <Text>HHH</Text>
-
-      <Button
-        title="Logout"
-        onPress={() => {
-          navigation.pop()
-        }}
-      />
-    </View> */}
