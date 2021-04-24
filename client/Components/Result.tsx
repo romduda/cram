@@ -31,7 +31,7 @@ export const Result = ({ route }:any) => {
           title = "Cram again?"
           type="outline"
           onPress={() => {
-            navigation.pop();
+            navigation.goBack();
           }}
         />
     </View>
