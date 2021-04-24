@@ -29,6 +29,7 @@ export const Result = ({ route }:any) => {
         </ScrollView>
         <Button
           title = "Cram again?"
+          type="outline"
           onPress={() => {
             navigation.pop();
           }}
