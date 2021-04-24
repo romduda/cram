@@ -23,8 +23,7 @@ const cramToApi = async function (imageURI: string): Promise<any> {
   }).then(result => {
     console.log('heres the topic : ', result.data.topics[0]);
     return result.data.topics[0];
-  })
-    .catch(err => console.error(err));
+  }).catch(err => console.error(err));
 }
 
 export { cramToApi, apolloClient }

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View, Image, Modal, ScrollView, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, Image, Modal, Alert } from 'react-native';
 import { Button } from 'react-native-elements';
 import { Camera } from 'expo-camera';
 import { cramToApi, apolloClient } from '../Services/ApiService';
@@ -78,6 +78,16 @@ export default function Main ({ navigation }: any) {
               type="outline"
               onPress={async () => {
                 const topic = await cramToApi(imageURI);
+                if (topic.title === 'Error') {
+                  return Alert.alert(
+                    "Text not recognised",
+                    "If you are sure text is readable, try cram again. Otherwise, please take another photo.",
+                    [
+                      { text: "OK" }
+                    ],
+                    { cancelable: false }
+                  );
+                }
                 setTopic(topic);
                 setModelVisible(false);
                 return navigation.push('Crammed', { paramC: topic })
