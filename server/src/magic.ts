@@ -1,7 +1,6 @@
 const magic = function (str: string): {title: string} {
   const topicTitles: Array<string> = ['Koa', 'Node', 'Express', 'Apollo', 'REST', 'HTTP', 'MongoDB', 'SQL'];
-  const arrOfWords: Array <string> = str.split('\n');
-  console.log(arrOfWords);
+  const arrOfWords: Array <string> = str.split('\n').flatMap(line => line.split(' '));
   const scores = topicTitles.map(topic => {
     let score: number = 0;
     arrOfWords.forEach(word => {
@@ -9,8 +8,6 @@ const magic = function (str: string): {title: string} {
     })
     return score;
   })
-  console.log('scores: ', scores);
-  console.log('Math.max(...scores): ', Math.max(...scores));
   if (Math.max(...scores) === 0) {
     const topic = {
       title: 'Not Found'
