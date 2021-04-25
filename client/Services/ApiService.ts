@@ -2,9 +2,11 @@ import { ApolloClient, InMemoryCache, gql } from '@apollo/client';
 import pathToBase64 from './ImageService';
 
 const apolloClient = new ApolloClient({
-  uri: 'http://10.10.22.223:4000/',
+  uri: 'http://192.168.8.107:4000/',
   cache: new InMemoryCache()
 });
+
+// ipconfig getifaddr en0
 
 const cramToApi = async function (imageURI: string): Promise<any> {
   console.log('request made');

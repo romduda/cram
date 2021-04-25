@@ -1,6 +1,7 @@
 const magic = function (str: string): {title: string} {
-  const topicTitles: Array<string> = ['Koa', 'Express'];
+  const topicTitles: Array<string> = ['Koa', 'Node', 'Express', 'Apollo', 'REST', 'HTTP', 'MongoDB', 'SQL'];
   const arrOfWords: Array <string> = str.split('\n');
+  console.log(arrOfWords);
   const scores = topicTitles.map(topic => {
     let score: number = 0;
     arrOfWords.forEach(word => {
