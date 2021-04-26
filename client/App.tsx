@@ -2,7 +2,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import React from 'react';
 import { Home } from './Components/Home';
 import { Cram } from './Components/Cram';
-import { Crammed} from './Components/Crammed';
+import { Crammed } from './Components/Crammed';
 import { NavigationContainer } from '@react-navigation/native';
 import { ApolloProvider } from '@apollo/client/react';
 import { apolloClient } from './Services/ApiService';

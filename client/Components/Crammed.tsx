@@ -19,7 +19,7 @@ export const Crammed:any = ({ route, navigation }: any) => {
             </View>
             :
             <View style={styles.found}>
-              <Text style={styles.caption}>Andre told you to read the docs again didnt he? Don't worry - Cram is here to the rescue!</Text>
+              {/* <Text style={styles.caption}>Andre told you to read the docs again didnt he? Don't worry - Cram is here to the rescue!</Text> */}
               <WebView source={{ uri: topic.url }} style={styles.webview} />
             </View>
             }
@@ -85,7 +85,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   videoContainer: {
-    padding: 50,
+    paddingHorizontal: 50,
     display: 'flex',
     justifyContent: 'space-between',
     flex: 1,
@@ -101,7 +101,9 @@ const styles = StyleSheet.create({
   },
   videoTitle: {
     textAlign: 'center',
-    fontSize: 30
+    fontSize: 30,
+    // borderWidth: 1,
+    paddingVertical: 30,
   },
   bulletContainer: {
     flex: 1,
@@ -154,6 +156,7 @@ const styles = StyleSheet.create({
     width: '90%'
   },
   found: {
-    height: 500
+    height: 500,
+    // marginTop: 30,
   }
 })
