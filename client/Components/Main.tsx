@@ -4,6 +4,7 @@ import { Button } from 'react-native-elements';
 import { Camera } from 'expo-camera';
 import { cramToApi, apolloClient } from '../Services/ApiService';
 import Topic from '../Interfaces/Topic';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 export default function Main ({ navigation }: any) {
   const [hasPermission, setHasPermission] = useState(false);
@@ -42,11 +43,27 @@ export default function Main ({ navigation }: any) {
           ref={ref=> setCamera(ref)}
           style={styles.camera}
           type={type}
-          />
+          >
+          <TouchableOpacity
+            style={styles.flip}
+            onPress={() => {
+              setType(
+                type === Camera.Constants.Type.back
+                  ? Camera.Constants.Type.front
+                  : Camera.Constants.Type.back
+              );
+            }}>
+              <Text>
+                FLIP
+              </Text>
+          </TouchableOpacity>
+
+        </Camera>
       </View>
-      <Button
+      {/* <Button
         title= "Flip Camera"
         type="outline"
+        style={styles.button}
         onPress={() => {
           setType(
             type === Camera.Constants.Type.back
@@ -54,9 +71,10 @@ export default function Main ({ navigation }: any) {
               : Camera.Constants.Type.back
           );
         }}>
-      </Button>
+      </Button> */}
       <Button
         title="Take Picture"
+        style={styles.button}
         type="outline"
         onPress={() => takePicture()}
       />
@@ -103,27 +121,37 @@ export default function Main ({ navigation }: any) {
 
 const styles = StyleSheet.create({
   bigContainer: {
-    flex: 1
+    flex: 1,
+    alignItems: 'center',
   },
   container: {
     flex: 1,
-    // backgroundColor: 'orange',
     alignItems: 'center',
     justifyContent: 'center',
-    padding: 40
-
-
+    borderRadius: 5,
+    margin: 30,
+    borderWidth: 1,
+    height: 140,
+    width: 300,
+    overflow: 'hidden'
   },
   camera: {
     width: '100%',
     height: '100%',
+    flex: 1,
     // borderWidth: 10
   },
   buttonContainer: {
-
+    width: '100%'
+  },
+  flip: {
+    display: 'flex',
+    flexDirection: 'row-reverse',
+    padding: 10
   },
   button: {
-
+    width: 300,
+    paddingBottom: 15
   },
   text: {
 
