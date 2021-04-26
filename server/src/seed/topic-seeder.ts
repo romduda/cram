@@ -19,7 +19,11 @@ const seedDb = async () => {
       title: 'Express',
       url: 'https://www.youtube.com/watch?v=L72fhGm1tfE',
       related: ['Koa', 'Node'],
-      bullets: ['bullet1', 'bullet2']
+      bullets: [
+        `const express = require('express')`,
+        `router = express.Router()`,
+        `app.get('/', (req, res) => res.send('Hello World!'))`
+      ]
     }),
     new Topic({
       title: 'Koa',

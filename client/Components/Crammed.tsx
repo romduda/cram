@@ -24,14 +24,15 @@ export const Crammed:any = ({ route, navigation }: any) => {
             </View>
             }
             <View style={styles.bulletContainer}>
-            {topic.bullets.map((bullet:string) => {
-              return (
-                <Text key={bullet} style={styles.bullet}>{bullet}</Text>
-              )
-            })}
+              <Text style={styles.tips}>Cheatsheet</Text>
+              {topic.bullets.map((bullet:string) => {
+                return (
+                  <Text key={bullet} style={styles.bullet}>{'\u25CF'}  {bullet}</Text>
+                )
+              })}
             </View>
             <View style={styles.relatedContainer}>
-              <Text>Did you cram? Check out these related pages if you have time!</Text>
+              <Text style={{fontSize: 22, fontWeight: '500'}}>Related Topics</Text>
               {topic.related.map((relatedTopic:string) => {
                 return (
                 <TouchableOpacity
@@ -89,13 +90,14 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     flex: 1,
     alignItems: 'center',
-    height: 1000
+    height: 1100
   },
   webview: {
     margin: 20,
     padding: 50,
     width: 300,
-    borderWidth: 1
+    borderWidth: 1,
+    borderRadius: 5
   },
   videoTitle: {
     textAlign: 'center',
@@ -105,18 +107,26 @@ const styles = StyleSheet.create({
     flex: 1,
     display: 'flex',
     alignItems: 'center',
+    justifyContent: 'space-around',
     width: 300,
-    height: 500
+    height: 300,
+    borderWidth: 1,
+    margin: 40,
+    borderRadius: 5
+  },
+  tips: {
+    fontSize: 22,
+    fontWeight: '500'
   },
   bullet: {
-    textAlign: 'center',
-    width: '80%',
+    textAlign: 'left',
+    width: '95%',
     height: '100%',
-    borderWidth: 1,
     borderRadius: 5,
-    display:'flex',
     flex: 1,
     margin: 10,
+    fontSize: 12,
+    alignSelf: 'center',
   },
   scroll: {
     display: 'flex',
@@ -128,7 +138,9 @@ const styles = StyleSheet.create({
   relatedContainer: {
     display: 'flex',
     justifyContent: 'flex-start',
+    alignItems: 'center',
     height: 150,
+    width: 300,
     margin: 10
   },
   relatedBtn: {
@@ -138,7 +150,8 @@ const styles = StyleSheet.create({
     marginTop: 10,
     justifyContent: 'center',
     alignItems: 'center',
-    borderRadius: 5
+    borderRadius: 5,
+    width: '90%'
   },
   found: {
     height: 500
