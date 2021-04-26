@@ -156,7 +156,7 @@ const styles = StyleSheet.create({
   },
   imageModal: {
     flex: 1,
-    // backgroundColor: "black",
+    backgroundColor: "black",
     paddingVertical: 80,
   },
   imageContainer: {

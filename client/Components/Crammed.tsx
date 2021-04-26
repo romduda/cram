@@ -65,7 +65,8 @@ export const Crammed:any = ({ route, navigation }: any) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
+    // backgroundColor: 'black',
   },
   home: {
     backgroundColor: 'orange',
