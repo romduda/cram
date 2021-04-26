@@ -2,12 +2,10 @@ import React from 'react';
 import { StyleSheet, Text, View, ScrollView, TouchableOpacity } from 'react-native';
 import { Button } from 'react-native-elements';
 import { WebView } from 'react-native-webview';
-import { useNavigation } from '@react-navigation/native';
 import { furtherTopics } from '../Services/ApiService';
 
 export const Crammed:any = ({ route, navigation }: any) => {
   const topic = route.params.paramC;
-  // const navigation = useNavigation();
   return (
     <View style={styles.container}>
       <ScrollView style= {styles.scroll}>
@@ -33,9 +31,7 @@ export const Crammed:any = ({ route, navigation }: any) => {
                   key={relatedTopic}
                   style={styles.relatedBtn}
                   onPress={async () => {
-                    console.log('pressing ', relatedTopic);
                     const topic = await furtherTopics(relatedTopic);
-                    console.log('heres the further topic', topic);
                     return navigation.push('Crammed', { paramC: topic })
                   }}
                 >
@@ -51,7 +47,7 @@ export const Crammed:any = ({ route, navigation }: any) => {
           title = "Cram again?"
           type="outline"
           onPress={() => {
-            navigation.goBack();
+            navigation.navigate('Cram');
           }}
         />
     </View>
