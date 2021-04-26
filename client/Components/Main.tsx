@@ -41,8 +41,8 @@ export default function Main ({ navigation }: any) {
         <Camera
           ref={ref=> setCamera(ref)}
           style={styles.camera}
-          type={type}/>
-
+          type={type}
+          />
       </View>
       <Button
         title= "Flip Camera"
@@ -110,11 +110,14 @@ const styles = StyleSheet.create({
     // backgroundColor: 'orange',
     alignItems: 'center',
     justifyContent: 'center',
+    padding: 40
+
 
   },
   camera: {
-    width: '90%',
-    height: '90%'
+    width: '100%',
+    height: '100%',
+    // borderWidth: 10
   },
   buttonContainer: {
 

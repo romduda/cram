@@ -14,5 +14,6 @@ export const typeDefs = gql`
 
   type Query {
     topics(input: TopicInput): [Topic]
+    furtherTopics(input: TopicInput): [Topic]
   }
 `;

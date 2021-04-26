@@ -28,4 +28,23 @@ const cramToApi = async function (imageURI: string): Promise<any> {
   }).catch(err => console.error(err));
 }
 
-export { cramToApi, apolloClient }
+const furtherTopics = async function (title: string): Promise<any> {
+  console.log('request made');
+  return apolloClient.query({
+    query: gql`
+	    {
+	      furtherTopics(input: {title: "${title}"}) {
+          title
+          url
+          related
+        }
+      }
+    `,
+    fetchPolicy: "network-only"
+  }).then(result => {
+    console.log('heres the topic : ', result.data.furtherTopics[0]);
+    return result.data.furtherTopics[0];
+  }).catch(err => console.error(err));
+}
+
+export { cramToApi, furtherTopics, apolloClient }

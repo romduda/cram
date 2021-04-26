@@ -13,6 +13,13 @@ export const resolvers = {
       const topic = await Topic.find(topicTitle).exec();
       console.log('heres the topic from the db', topic);
       return topic
+    },
+    furtherTopics: async (_:null, args:{input: {title: string}}) => {
+      const { input } = args;
+      console.log('in the backend now for further');
+      const topic = await Topic.find(input).exec();
+      console.log('heres the topic from the db', topic);
+      return topic
     }
-  },
+  }
 };
