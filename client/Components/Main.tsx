@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, Image, Modal, Alert } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
 import { Button } from 'react-native-elements';
 import { Camera } from 'expo-camera';
 import { cramToApi, apolloClient } from '../Services/ApiService';
@@ -53,9 +54,7 @@ export default function Main ({ navigation }: any) {
                   : Camera.Constants.Type.back
               );
             }}>
-              <Text>
-                FLIP
-              </Text>
+              <Ionicons name="camera-reverse-outline" size={32}/>
           </TouchableOpacity>
 
         </Camera>
