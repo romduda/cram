@@ -1,7 +1,7 @@
 function merge(leftArr: Array<number | undefined>, rightArr: Array<number | undefined>): Array<number | undefined> {
   let sortedArr: Array<number | undefined> = [];
   while (leftArr.length && rightArr.length) {
-    if (leftArr[0] && rightArr[0] && leftArr[0] <= rightArr[0]) {
+    if (leftArr[0] !== undefined && rightArr[0] !== undefined && leftArr[0] <= rightArr[0]) {
       sortedArr.push(leftArr[0]);
       leftArr = leftArr.slice(1)
     } else {

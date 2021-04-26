@@ -9,7 +9,7 @@ export const Home = ({ navigation }:any) => {
   return (
     <View style={styles.container}>
       <Video
-      source={require('../assets/developerVid.mp4')}
+      source={require('../assets/blurredCode.mp4')}
       style={styles.backgroundVideo}
       rate={1}
       shouldPlay={true}
@@ -21,7 +21,8 @@ export const Home = ({ navigation }:any) => {
       <Text
       style={styles.home}
       >
-      <Ionicons name="information-circle-outline" size={80} style={{color: 'white'}}/>
+      CRAM
+      {/* <Ionicons name="information-circle-outline" size={80} style={{color: 'white'}}/> */}
       </Text>
       <Button
         title="Login"
@@ -46,7 +47,9 @@ const styles = StyleSheet.create({
     flex: 1,
     fontWeight: '600',
     marginTop: 100,
-    fontSize: 30,
+    fontSize: 50,
+    color: 'white',
+    fontFamily: 'Optima-Bold'
   },
   btn: {
     padding: 50
