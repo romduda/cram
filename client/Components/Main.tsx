@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View, Image, Modal, Alert } from 'react-native';
+import { StyleSheet, Text, View, Image, Modal, Alert, ImageBackground } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { Button } from 'react-native-elements';
 import { Camera } from 'expo-camera';
@@ -54,9 +54,8 @@ export default function Main ({ navigation }: any) {
                   : Camera.Constants.Type.back
               );
             }}>
-              <Ionicons name="camera-reverse-outline" size={32}/>
+            <Ionicons name="camera-reverse-outline" size={32}/>
           </TouchableOpacity>
-
         </Camera>
       </View>
       <Button
@@ -71,15 +70,14 @@ export default function Main ({ navigation }: any) {
       >
       <View style={styles.imageModal}>
         <View style={styles.imageContainer}>
-          <Image source={{uri:imageURI}} style={styles.image}/>
-          <View style={styles.buttonsFlex}>
+          <ImageBackground source={{uri:imageURI}} style={styles.image}>
+            <TouchableOpacity onPress={() => setModelVisible(false)} style={styles.cancelContainer}>
+              <Ionicons name="ios-close" size={32}/>
+            </TouchableOpacity>
+          </ImageBackground>
+          <View style={styles.buttonContainer}>
             <Button
-              title = "Retake Image"
-              type="outline"
-              onPress={() => setModelVisible(false)}
-            />
-            <Button
-              title = "Cram!"
+              title="Cram!"
               type="outline"
               onPress={async () => {
                 const topic = await cramToApi(imageURI);
@@ -91,13 +89,14 @@ export default function Main ({ navigation }: any) {
                       { text: "OK" }
                     ],
                     { cancelable: false }
-                  );
-                }
-                setTopic(topic);
-                setModelVisible(false);
-                return navigation.push('Crammed', { paramC: topic })
+                    );
+                  }
+                  setTopic(topic);
+                  setModelVisible(false);
+                  return navigation.push('Crammed', { paramC: topic })
               }}
-            />
+            >
+            </Button>
           </View>
         </View>
       </View>
@@ -128,44 +127,49 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   buttonContainer: {
-    width: '100%'
+    width: '100%',
+    margin: 20,
+  },
+  cancelContainer: {
+    display: 'flex',
+    flexDirection: 'row',
+    padding: 20
   },
   flip: {
     display: 'flex',
-    flexDirection: 'row-reverse',
+    flexDirection: 'row',
     padding: 10
   },
   button: {
     width: 300,
-    paddingBottom: 15
-  },
-  text: {
-
-  },
-  image: {
-    width: '100%',
-    height: '100%'
+    paddingBottom: 15,
   },
   imageModal: {
     flex: 1,
-    backgroundColor: "#000000aa",
-    paddingVertical: 80
+    // backgroundColor: "black",
+    paddingVertical: 80,
   },
   imageContainer: {
-    backgroundColor: "#ffffff",
-    margin: 50,
-    padding: 10,
-    paddingBottom: 50
+    // backgroundColor: "#000000aa",
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    flex: 1,
+    marginHorizontal: 40,
+    borderRadius: 10,
+    overflow: 'hidden',
+    // borderWidth: 1
   },
-  retakeBtn: {
-    width: '100%',
+  image: {
+    width: '103%',
     height: '100%',
-    textAlign: 'center',
-    backgroundColor: 'red'
+    flex: 1,
+    // borderWidth: 1
   },
   buttonsFlex: {
+    flex: 1,
+    display: 'flex',
     flexDirection: "row",
-    justifyContent: "space-between"
   },
 
 });
