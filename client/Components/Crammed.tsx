@@ -5,9 +5,9 @@ import { WebView } from 'react-native-webview';
 import { useNavigation } from '@react-navigation/native';
 import { furtherTopics } from '../Services/ApiService';
 
-export const Crammed = ({ route }:any) => {
+export const Crammed:any = ({ route, navigation }: any) => {
   const topic = route.params.paramC;
-  const navigation = useNavigation();
+  // const navigation = useNavigation();
   return (
     <View style={styles.container}>
       <ScrollView style= {styles.scroll}>
@@ -36,7 +36,7 @@ export const Crammed = ({ route }:any) => {
                     console.log('pressing ', relatedTopic);
                     const topic = await furtherTopics(relatedTopic);
                     console.log('heres the further topic', topic);
-                    return navigation.navigate('Crammed', { paramC: topic })
+                    return navigation.push('Crammed', { paramC: topic })
                   }}
                 >
                   <Text>

@@ -101,7 +101,7 @@ export default function Main ({ navigation }: any) {
                 }
                   setTopic(topic);
                   setModelVisible(false);
-                  navigation.navigate('Crammed', { paramC: topic })
+                  navigation.push('Crammed', { paramC: topic })
                   return setLoading(false);
               }}
             >
