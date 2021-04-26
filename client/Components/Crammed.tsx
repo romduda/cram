@@ -44,7 +44,7 @@ export const Crammed:any = ({ route, navigation }: any) => {
           </View>
         </ScrollView>
         <Button
-          title = "Cram again?"
+          title="Cram again?"
           type="outline"
           onPress={() => {
             navigation.navigate('Cram');

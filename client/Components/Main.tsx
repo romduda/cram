@@ -73,8 +73,8 @@ export default function Main ({ navigation }: any) {
       <View style={styles.imageModal}>
         <Spinner
           visible={loading}
-          textContent={'Loading...'}
-          // textStyle={styles.spinnerTextStyle}
+          textContent={'Scanning...'}
+          textStyle={styles.spinnerTextStyle}
         />
         <View style={styles.imageContainer}>
           <ImageBackground source={{uri:imageURI}} style={styles.image}>
@@ -179,6 +179,10 @@ const styles = StyleSheet.create({
     flex: 1,
     display: 'flex',
     flexDirection: "row",
+  },
+  spinnerTextStyle: {
+    color: 'white',
+    fontWeight: '200'
   },
 
 });
