@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View, Image, Modal, Alert, ImageBackground } from 'react-native';
+import { StyleSheet, Text, View, Modal, Alert, ImageBackground } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { Button } from 'react-native-elements';
+import Spinner from 'react-native-loading-spinner-overlay';
 import { Camera } from 'expo-camera';
 import { cramToApi, apolloClient } from '../Services/ApiService';
 import Topic from '../Interfaces/Topic';
@@ -14,6 +15,7 @@ export default function Main ({ navigation }: any) {
   const [modalVisible, setModelVisible] = useState(false);
   const [type, setType] = useState(Camera.Constants.Type.back);
   const [topic, setTopic] = useState<Topic|null>(null);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     (async () => {
@@ -69,6 +71,11 @@ export default function Main ({ navigation }: any) {
         visible={modalVisible}
       >
       <View style={styles.imageModal}>
+        <Spinner
+          visible={loading}
+          textContent={'Loading...'}
+          // textStyle={styles.spinnerTextStyle}
+        />
         <View style={styles.imageContainer}>
           <ImageBackground source={{uri:imageURI}} style={styles.image}>
             <TouchableOpacity onPress={() => setModelVisible(false)} style={styles.cancelContainer}>
@@ -80,20 +87,22 @@ export default function Main ({ navigation }: any) {
               title="Cram!"
               type="outline"
               onPress={async () => {
+                setLoading(true);
                 const topic = await cramToApi(imageURI);
                 if (topic.title === 'Error') {
                   return Alert.alert(
                     "Text not recognised",
                     "If you are sure text is readable, try cram again. Otherwise, please take another photo.",
                     [
-                      { text: "OK" }
+                      { text: "OK" ,  onPress: () => setLoading(false)}
                     ],
                     { cancelable: false }
-                    );
-                  }
+                  );
+                }
                   setTopic(topic);
                   setModelVisible(false);
-                  return navigation.push('Crammed', { paramC: topic })
+                  navigation.navigate('Crammed', { paramC: topic })
+                  return setLoading(false);
               }}
             >
             </Button>
