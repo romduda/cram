@@ -17,7 +17,8 @@ const cramToApi = async function (imageURI: string): Promise<any> {
 	      topics(input: {title: "${imgBase64}"}) {
           title
           url
-          related
+          related,
+          bullets
         }
       }
     `,
@@ -37,6 +38,7 @@ const furtherTopics = async function (title: string): Promise<any> {
           title
           url
           related
+          bullets
         }
       }
     `,

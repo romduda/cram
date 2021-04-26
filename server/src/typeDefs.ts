@@ -6,6 +6,7 @@ export const typeDefs = gql`
     title: String
     url: String
     related: [String]
+    bullets: [String]
   }
 
   input TopicInput {

@@ -18,47 +18,56 @@ const seedDb = async () => {
     new Topic({
       title: 'Express',
       url: 'https://www.youtube.com/watch?v=L72fhGm1tfE',
-      related: ['Koa', 'Node']
+      related: ['Koa', 'Node'],
+      bullets: ['bullet1', 'bullet2']
     }),
     new Topic({
       title: 'Koa',
       url: 'https://www.youtube.com/watch?v=z84uTk5zmak',
-      related: ['Express', 'Node']
+      related: ['Express', 'Node'],
+      bullets: ['bullet1', 'bullet2']
     }),
     new Topic({
       title: 'Node',
       url: 'https://www.youtube.com/watch?v=TlB_eWDSMt4',
-      related: ['Koa', 'Express']
+      related: ['Koa', 'Express'],
+      bullets: ['bullet1', 'bullet2']
     }),
     new Topic({
       title: 'GraphQL',
       url: 'https://www.youtube.com/watch?v=Y0lDGjwRYKw',
-      related: ['Apollo', 'REST']
+      related: ['Apollo', 'REST'],
+      bullets: ['bullet1', 'bullet2']
     }),
     new Topic({
       title: 'Apollo',
       url: 'https://www.youtube.com/watch?v=mSzUb7f47qk',
-      related: ['GraphQL', 'Express']
+      related: ['GraphQL', 'Express'],
+      bullets: ['bullet1', 'bullet2']
     }),
     new Topic({
       title: 'REST',
       url: 'https://www.youtube.com/watch?v=qbLc5a9jdXo',
-      related: ['GraphQL', 'HTTP']
+      related: ['GraphQL', 'HTTP'],
+      bullets: ['bullet1', 'bullet2']
     }),
     new Topic({
       title: 'HTTP',
       url: 'https://www.youtube.com/watch?v=iYM2zFP3Zn0',
-      related: ['GraphQL', 'REST']
+      related: ['GraphQL', 'REST'],
+      bullets: ['bullet1', 'bullet2']
     }),
     new Topic({
       title: 'SQL',
       url: 'https://www.youtube.com/watch?v=HXV3zeQKqGY',
-      related: ['MongoDB', 'Sequelize']
+      related: ['MongoDB', 'Sequelize'],
+      bullets: ['bullet1', 'bullet2']
     }),
     new Topic({
       title: 'MongoDB',
       url: 'https://www.youtube.com/watch?v=-56x56UppqQ',
-      related: ['SQL', 'Mongoose']
+      related: ['SQL', 'Mongoose'],
+      bullets: ['bullet1', 'bullet2']
     }),
   ];
 

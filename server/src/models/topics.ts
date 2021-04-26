@@ -19,6 +19,10 @@ const topicSchema = new mongoose.Schema({
   related: {
     type: [String],
     require: true
+  },
+  bullets: {
+    type: [String],
+    require: true
   }
 });
 

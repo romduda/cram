@@ -1,5 +1,3 @@
-// import mergeSort from './mergeSort';
-
 const magic = function (str: string): {title: string} {
   const topicTitles: Array<string> = ['Koa', 'Node', 'Express', 'Apollo', 'REST', 'HTTP', 'MongoDB', 'SQL'];
   const arrOfWords: Array <string> = str.split('\n').flatMap(line => line.split(' '));

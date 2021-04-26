@@ -23,9 +23,16 @@ export const Crammed:any = ({ route, navigation }: any) => {
               <WebView source={{ uri: topic.url }} style={styles.webview} />
             </View>
             }
+            <View style={styles.bulletContainer}>
+            {topic.bullets.map((bullet:string) => {
+              return (
+                <Text key={bullet} style={styles.bullet}>{bullet}</Text>
+              )
+            })}
+            </View>
             <View style={styles.relatedContainer}>
               <Text>Did you cram? Check out these related pages if you have time!</Text>
-              {topic && topic.related.map((relatedTopic:string) => {
+              {topic.related.map((relatedTopic:string) => {
                 return (
                 <TouchableOpacity
                   key={relatedTopic}
@@ -82,7 +89,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     flex: 1,
     alignItems: 'center',
-    height: 800
+    height: 1000
   },
   webview: {
     margin: 20,
@@ -90,12 +97,26 @@ const styles = StyleSheet.create({
     width: 300,
     borderWidth: 1
   },
-  videoButtons: {
-
-  },
   videoTitle: {
     textAlign: 'center',
     fontSize: 30
+  },
+  bulletContainer: {
+    flex: 1,
+    display: 'flex',
+    alignItems: 'center',
+    width: 300,
+    height: 500
+  },
+  bullet: {
+    textAlign: 'center',
+    width: '80%',
+    height: '100%',
+    borderWidth: 1,
+    borderRadius: 5,
+    display:'flex',
+    flex: 1,
+    margin: 10,
   },
   scroll: {
     display: 'flex',
