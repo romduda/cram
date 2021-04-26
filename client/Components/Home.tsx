@@ -9,7 +9,7 @@ export const Home = ({ navigation }:any) => {
   return (
     <View style={styles.container}>
       <Video
-      source={{ uri: "https://s3-eu-west-1.amazonaws.com/video.gallereplay.com/artistarea/Lighthouse%20stands%20in%20Istanbul%E2%80%99s%20harbour_0554659b-5dc1-43d6-8a93-b31ec6b67f63/Cinemagraph_plain/1920x1080/cinemagraph.mp4"}}
+      source={require('../assets/developerVid.mp4')}
       style={styles.backgroundVideo}
       rate={1}
       shouldPlay={true}
@@ -21,7 +21,7 @@ export const Home = ({ navigation }:any) => {
       <Text
       style={styles.home}
       >
-      <Ionicons name="information-circle-outline" size={80} fo/>
+      <Ionicons name="information-circle-outline" size={80} style={{color: 'white'}}/>
       </Text>
       <Button
         title="Login"
