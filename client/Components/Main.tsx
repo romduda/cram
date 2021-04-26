@@ -59,18 +59,6 @@ export default function Main ({ navigation }: any) {
 
         </Camera>
       </View>
-      {/* <Button
-        title= "Flip Camera"
-        type="outline"
-        style={styles.button}
-        onPress={() => {
-          setType(
-            type === Camera.Constants.Type.back
-              ? Camera.Constants.Type.front
-              : Camera.Constants.Type.back
-          );
-        }}>
-      </Button> */}
       <Button
         title="Take Picture"
         style={styles.button}
@@ -138,7 +126,6 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%',
     flex: 1,
-    // borderWidth: 10
   },
   buttonContainer: {
     width: '100%'
