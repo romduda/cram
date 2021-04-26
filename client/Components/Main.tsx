@@ -118,6 +118,7 @@ const styles = StyleSheet.create({
   bigContainer: {
     flex: 1,
     alignItems: 'center',
+    backgroundColor: 'black'
   },
   container: {
     flex: 1,

@@ -2,6 +2,7 @@ import React from 'react';
 import { StackScreenProps } from '@react-navigation/stack';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import CustomText from '../Components/CustomText';
 // import { Button } from 'react-native-elements';
 import { Video } from "expo-av";
 
@@ -27,7 +28,7 @@ export const Home = ({ navigation }:any) => {
       style={styles.btn}
       onPress={() => navigation.push('Cram', { paramA: 'Hello!' })
       }>
-        <Text style={styles.text}>Log In</Text>
+      <CustomText>Log In</CustomText>
       </TouchableOpacity>
 
     </View>
@@ -51,27 +52,13 @@ const styles = StyleSheet.create({
     color: 'white',
     fontFamily: 'Optima-Bold'
   },
-  text: {
-    textAlign: 'center',
-    // marginBottom: 30,
-    fontFamily: 'Optima-Bold',
-    fontSize: 20,
-    color: 'white',
-    height: '100%',
-    // borderWidth: 1,
-    backgroundColor: 'blue',
-    flex: 1,
-    padding: 12,
-  },
   btn: {
     width: '90%',
     height: 50,
     borderRadius: 5,
-    // borderWidth: 10,
     display: 'flex',
     justifyContent: 'center',
     marginBottom: 20,
-    // paddingVertical: 15,
   },
   backgroundVideo: {
     position: 'absolute',
