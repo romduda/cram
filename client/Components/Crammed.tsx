@@ -56,7 +56,9 @@ export const Crammed:any = ({ route, navigation }: any) => {
         <TouchableOpacity
         style={styles.againBtn}
         onPress={() => {
-          navigation.navigate('Cram');
+          setTimeout(() => {
+            navigation.navigate('Cram');
+          }, 100);
         }}
         >
           <CustomText>
