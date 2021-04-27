@@ -1,19 +1,16 @@
 import React, {useState} from 'react'
 import { StyleSheet, TextInput, View, TouchableOpacity, Text } from 'react-native';
-import CustomText from './CustomText';
-import { Ionicons } from '@expo/vector-icons';
 
 export default function Login({ navigation, modalVisible, setModalVisible, arrowVisible, setArrowVisible}: any) {
-  const [email, setEmail] = useState('');
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   return (
     <View style={styles.container}>
       <View>
         <TextInput
-            value={email}
-            keyboardType = 'email-address'
-            onChangeText={(email) => setEmail(email)}
-            placeholder='Email'
+            value={username}
+            onChangeText={(username) => setUsername(username)}
+            placeholder='Username'
             placeholderTextColor = 'white'
             style={styles.input}
             />
@@ -31,7 +28,7 @@ export default function Login({ navigation, modalVisible, setModalVisible, arrow
           onPress={() => {
             setModalVisible(!modalVisible);
             setTimeout(() => setArrowVisible(!arrowVisible), 700);
-            setTimeout(() => navigation.push('Cram', { paramA: 'Hello!' }), 300);
+            setTimeout(() => navigation.push('Cram', { paramA: username }), 300);
           }
           }
           >
@@ -65,7 +62,6 @@ const styles = StyleSheet.create({
   },
   button: {
     alignItems: 'center',
-    // backgroundColor: 'powderblue',
     width: 200,
     height: 44,
     padding: 10,

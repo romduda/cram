@@ -9,7 +9,7 @@ import Topic from '../Interfaces/Topic';
 import CustomText from './CustomText';
 // import { TouchableOpacity } from 'react-native-gesture-handler';
 
-export default function Main ({ navigation }: any) {
+export default function Main ({ navigation, route }: any) {
   const [hasPermission, setHasPermission] = useState(false);
   const [camera, setCamera] = useState<Camera|null>(null);
   const [imageURI, setImageURI] = useState('');
@@ -59,6 +59,9 @@ export default function Main ({ navigation }: any) {
             }}>
             <Ionicons name="camera-reverse-outline" color="white" size={38}/>
           </TouchableOpacity>
+          <View style={styles.imageTextContainer}>
+              <Text style={styles.imageText}> Hi {route.params.paramA}, what do you need to cram? </Text>
+          </View>
         </Camera>
       </View>
       <TouchableOpacity
@@ -137,6 +140,8 @@ const styles = StyleSheet.create({
   camera: {
     width: '100%',
     height: '100%',
+    display: 'flex',
+    justifyContent: 'space-between',
     flex: 1,
   },
   buttonContainer: {
@@ -151,6 +156,16 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
     padding: 10
+  },
+  imageTextContainer: {
+    width: '100%',
+    height: 70,
+  },
+  imageText: {
+    textAlign: 'center',
+    color:'white',
+    fontSize: 22,
+    fontFamily: 'Optima-Bold',
   },
   flip: {
     display: 'flex',
@@ -186,7 +201,7 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%',
     flex: 1,
-    borderRadius: 5,
+    borderRadius: 5
   },
   spinnerTextStyle: {
     color: 'white',
