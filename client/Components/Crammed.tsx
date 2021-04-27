@@ -27,7 +27,7 @@ export const Crammed:any = ({ route, navigation }: any) => {
               <Text style={styles.tips}>Cheatsheet</Text>
               {topic.bullets.map((bullet:string) => {
                 return (
-                  <View key={bullet}style={styles.bullet}>
+                  <View key={bullet} style={styles.bullet}>
                     <Text style={styles.bulletText}>{'\u25CF'}  {bullet}</Text>
                   </View>
                 )
@@ -53,13 +53,6 @@ export const Crammed:any = ({ route, navigation }: any) => {
             </View>
           </View>
         </ScrollView>
-        {/* <Button
-          title="Cram again?"
-          type="outline"
-          onPress={() => {
-            navigation.navigate('Cram');
-          }}
-        /> */}
         <TouchableOpacity
         style={styles.againBtn}
         onPress={() => {
