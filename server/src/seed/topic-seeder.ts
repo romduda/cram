@@ -90,9 +90,9 @@ const seedDb = async () => {
         `200 OK; 201 Created; 202 Accepted; 204 No content; 206 Partial content`,
         `401 Unauthorized; 403 Forbidden; 422 Unprocessable entity`,
         `GET;
-        PUT;
-        DELETE;
-        POST`
+      PUT;
+      DELETE;
+      POST`
       ]
     }),
     new Topic({
@@ -108,7 +108,7 @@ const seedDb = async () => {
     new Topic({
       title: 'SQL',
       url: 'https://www.youtube.com/watch?v=HXV3zeQKqGY',
-      related: ['MongoDB', 'Sequelize'],
+      related: ['MongoDB'],
       bullets: [
         `SELECT * FROM users;`,
         `INSERT INTO users (first_name, last_name, address, email)
@@ -120,7 +120,7 @@ const seedDb = async () => {
     new Topic({
       title: 'MongoDB',
       url: 'https://www.youtube.com/watch?v=-56x56UppqQ',
-      related: ['SQL', 'Mongoose'],
+      related: ['SQL'],
       bullets: [
         `db.createCollection('posts')`,
         `db.posts.insert({
