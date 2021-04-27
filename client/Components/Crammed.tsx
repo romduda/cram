@@ -3,6 +3,7 @@ import { StyleSheet, Text, View, ScrollView, TouchableOpacity } from 'react-nati
 import { Button } from 'react-native-elements';
 import { WebView } from 'react-native-webview';
 import { furtherTopics } from '../Services/ApiService';
+import CustomText from './CustomText';
 
 export const Crammed:any = ({ route, navigation }: any) => {
   const topic = route.params.paramC;
@@ -51,13 +52,23 @@ export const Crammed:any = ({ route, navigation }: any) => {
             </View>
           </View>
         </ScrollView>
-        <Button
+        {/* <Button
           title="Cram again?"
           type="outline"
           onPress={() => {
             navigation.navigate('Cram');
           }}
-        />
+        /> */}
+        <TouchableOpacity
+        style={styles.againBtn}
+        onPress={() => {
+          navigation.navigate('Cram');
+        }}
+        >
+          <CustomText>
+            Cram again?
+          </CustomText>
+        </TouchableOpacity>
     </View>
   )
 }
@@ -66,7 +77,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'space-between',
-    // backgroundColor: 'black',
+    alignItems: 'center',
+    width: '100%',
     backgroundColor: '#1F1F1F',
     color: 'white'
   },
@@ -87,7 +99,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   videoContainer: {
-    paddingHorizontal: 50,
+    // paddingHorizontal: 50,
     display: 'flex',
     justifyContent: 'space-between',
     flex: 1,
@@ -145,6 +157,7 @@ const styles = StyleSheet.create({
   scroll: {
     display: 'flex',
     flex: 1,
+    width: '100%'
   },
   caption: {
     padding: 10
@@ -172,5 +185,14 @@ const styles = StyleSheet.create({
   },
   found: {
     height: 500,
+  },
+  againBtn: {
+    width: '100%',
+    height: 55,
+    // borderWidth: 1,
+    // borderColor: 'white',
+    borderRadius: 5,
+    backgroundColor: 'blue',
+    paddingHorizontal: 30,
   }
 })
