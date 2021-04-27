@@ -56,7 +56,7 @@ export default function Main ({ navigation }: any) {
                   : Camera.Constants.Type.back
               );
             }}>
-            <Ionicons name="camera-reverse-outline" size={32}/>
+            <Ionicons name="camera-reverse-outline" color="white" size={32}/>
           </TouchableOpacity>
         </Camera>
       </View>
@@ -79,7 +79,7 @@ export default function Main ({ navigation }: any) {
         <View style={styles.imageContainer}>
           <ImageBackground source={{uri:imageURI}} style={styles.image}>
             <TouchableOpacity onPress={() => setModelVisible(false)} style={styles.cancelContainer}>
-              <Ionicons name="ios-close" size={32}/>
+              <Ionicons name="ios-close" color="white" size={32}/>
             </TouchableOpacity>
           </ImageBackground>
           <View style={styles.buttonContainer}>
