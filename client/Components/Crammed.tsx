@@ -32,7 +32,7 @@ export const Crammed:any = ({ route, navigation }: any) => {
               })}
             </View>
             <View style={styles.relatedContainer}>
-              <Text style={{fontSize: 22, fontWeight: '500'}}>Related Topics</Text>
+              <Text style={{fontSize: 22, fontWeight: '500', color:'white', fontFamily: 'Optima-Bold',}}>Related Topics</Text>
               {topic.related.map((relatedTopic:string) => {
                 return (
                 <TouchableOpacity
@@ -43,7 +43,7 @@ export const Crammed:any = ({ route, navigation }: any) => {
                     return navigation.push('Crammed', { paramC: topic })
                   }}
                 >
-                  <Text>
+                  <Text style={{color:'white', fontFamily: 'Optima-Bold'}}>
                     {relatedTopic}
                   </Text>
                 </TouchableOpacity>)
@@ -67,9 +67,10 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'space-between',
     // backgroundColor: 'black',
+    backgroundColor: '#1F1F1F',
+    color: 'white'
   },
   home: {
-    backgroundColor: 'orange',
     padding: 50,
     textAlign: 'center',
     flex: 1
@@ -91,19 +92,21 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     flex: 1,
     alignItems: 'center',
-    height: 1100
+    height: 1100,
   },
   webview: {
     margin: 20,
     padding: 50,
     width: 300,
     borderWidth: 1,
-    borderRadius: 5
+    borderRadius: 5,
+    borderColor: 'white'
   },
   videoTitle: {
     textAlign: 'center',
     fontSize: 30,
-    // borderWidth: 1,
+    color:'white',
+    fontFamily: 'Optima-Bold',
     paddingVertical: 30,
   },
   bulletContainer: {
@@ -115,11 +118,14 @@ const styles = StyleSheet.create({
     height: 300,
     borderWidth: 1,
     margin: 40,
-    borderRadius: 5
+    borderRadius: 5,
+    borderColor: 'white'
   },
   tips: {
     fontSize: 22,
-    fontWeight: '500'
+    fontWeight: '500',
+    color:'white',
+    fontFamily: 'Optima-Bold',
   },
   bullet: {
     textAlign: 'left',
@@ -130,6 +136,8 @@ const styles = StyleSheet.create({
     margin: 10,
     fontSize: 12,
     alignSelf: 'center',
+    color:'white',
+    fontFamily: 'Optima-Bold',
   },
   scroll: {
     display: 'flex',
@@ -144,20 +152,22 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     height: 150,
     width: 300,
-    margin: 10
+    margin: 10,
   },
   relatedBtn: {
     borderWidth: 1,
+    borderColor: 'white',
     display: 'flex',
     flex: 1,
     marginTop: 10,
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 5,
-    width: '90%'
+    width: '90%',
+    color:'white',
+    fontFamily: 'Optima-Bold',
   },
   found: {
     height: 500,
-    // marginTop: 30,
   }
 })

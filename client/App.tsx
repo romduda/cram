@@ -23,8 +23,8 @@ export default function App() {
     <NavigationContainer>
       <Root.Navigator initialRouteName="Home" >
         <Root.Screen name="Home" component={Home} options={{ headerShown: false }}/>
-        <Root.Screen name="Cram" component={Cram} options={{ headerStyle: {backgroundColor: '#1F1F1F'}, headerTitleStyle: {fontWeight: 'bold', color: 'white', fontFamily: 'Optima-Bold', fontSize: 22}, headerRight: () => <HeaderBtn/> }}/>
-        <Root.Screen name="Crammed" component={Crammed} options={{headerBackTitle: 'Back', headerTitle:'',headerRight: () => <HeaderBtn/> }} />
+        <Root.Screen name="Cram" component={Cram} options={{ headerTintColor: 'white', headerBackTitleStyle: {fontFamily: 'Optima-Bold', color: 'white'}, headerStyle: {backgroundColor: '#1F1F1F'}, headerTitleStyle: {fontWeight: 'bold', color: 'white', fontFamily: 'Optima-Bold', fontSize: 22}, headerRight: () => <HeaderBtn/> }}/>
+        <Root.Screen name="Crammed" component={Crammed} options={{headerTintColor: 'white', headerBackTitleStyle: {fontFamily: 'Optima-Bold', color: 'white'}, headerStyle: {backgroundColor: '#1F1F1F'}, headerTitleStyle: {fontWeight: 'bold', color: 'white', fontFamily: 'Optima-Bold', fontSize: 22}, headerBackTitle: 'Back', headerTitle:'', headerRight: () => <HeaderBtn/> }} />
       </Root.Navigator>
     </NavigationContainer>
     </ApolloProvider>

@@ -1,27 +1,40 @@
 import React from 'react'
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Touchable, TouchableOpacity, Text } from 'react-native';
 import { Button } from 'react-native-elements';
 import { useNavigation } from '@react-navigation/native';
 
 export default function HeaderBtn () {
   const navigation = useNavigation();
   return (
-    <Button
+    // <Button
+    //   style={styles.logOutBtn}
+    //   title="Logout"
+    //   type="clear"
+      // onPress={() => {
+      //   navigation.navigate('Home');
+      // }}
+    // />
+    <TouchableOpacity
       style={styles.logOutBtn}
-      title="Logout"
-      type="clear"
       onPress={() => {
         navigation.navigate('Home');
       }}
-    />
+    >
+      <Text style={styles.btnText}>
+        Logout
+      </Text>
+    </TouchableOpacity>
   )
 }
 
 const styles = StyleSheet.create({
   logOutBtn: {
-    fontFamily: 'Optima-Bold',
     borderRadius: 5,
-    marginHorizontal: 7,
-    // marginVertical: 5
+    marginHorizontal: 15,
+  },
+  btnText: {
+    fontFamily: 'Optima-Bold',
+    fontSize: 16,
+    color: 'white',
   }
 })
