@@ -26,9 +26,11 @@ export default function Login({ navigation, modalVisible, setModalVisible, arrow
         <TouchableOpacity
           style={styles.btn}
           onPress={() => {
-            setModalVisible(!modalVisible);
-            setTimeout(() => setArrowVisible(!arrowVisible), 700);
-            setTimeout(() => navigation.push('Cram', { paramA: username }), 300);
+            if (username && password) {
+              setModalVisible(!modalVisible);
+              setTimeout(() => setArrowVisible(!arrowVisible), 700);
+              setTimeout(() => navigation.push('Cram', { paramA: username }), 300);
+            }
           }
           }
           >
