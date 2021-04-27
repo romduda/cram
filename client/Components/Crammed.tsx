@@ -32,8 +32,8 @@ export const Crammed:any = ({ route, navigation }: any) => {
                 )
               })}
             </View>
+            <Text style={{fontSize: 22, fontWeight: '500', color:'white', fontFamily: 'Optima-Bold',}}>Related Topics</Text>
             <View style={styles.relatedContainer}>
-              <Text style={{fontSize: 22, fontWeight: '500', color:'white', fontFamily: 'Optima-Bold',}}>Related Topics</Text>
               {topic.related.map((relatedTopic:string) => {
                 return (
                 <TouchableOpacity
@@ -104,7 +104,10 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     flex: 1,
     alignItems: 'center',
-    height: 1100,
+    height: 1200,
+    // borderWidth: 1,
+    // borderColor: 'white'
+    marginBottom: 50,
   },
   webview: {
     margin: 20,
@@ -166,20 +169,24 @@ const styles = StyleSheet.create({
     display: 'flex',
     justifyContent: 'flex-start',
     alignItems: 'center',
-    height: 150,
+    // height: 300,
     width: 300,
     margin: 10,
+    // borderColor: 'white',
+    // borderWidth: 1
+    // paddingVertical: 20,
   },
   relatedBtn: {
     borderWidth: 1,
     borderColor: 'white',
-    display: 'flex',
-    flex: 1,
-    marginTop: 10,
+    // display: 'flex',
+    // flex: 1,
+    margin: 5,
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 5,
     width: '90%',
+    height: 60,
     color:'white',
     fontFamily: 'Optima-Bold',
   },
