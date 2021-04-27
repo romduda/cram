@@ -34,7 +34,7 @@ export const Home = ({ navigation }:any) => {
       }}>
       <CustomText>
         {arrowVisible ? <Ionicons name="arrow-forward-outline"
-            size={32}></Ionicons> : "Log In" }
+            size={25} style={{flex:1}}></Ionicons> : "Log In" }
         </CustomText>
       </TouchableOpacity>
       <View style= {styles.modalContainer}>
