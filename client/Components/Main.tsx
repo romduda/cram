@@ -96,7 +96,7 @@ export default function Main ({ navigation, route }: any) {
               if (topic.title === 'Error') {
                 return Alert.alert(
                   "No text found!",
-                  "Try taking another photo",
+                  "Try taking another photo.",
                   [
                     { text: "OK" ,  onPress: () => setLoading(false)}
                   ],

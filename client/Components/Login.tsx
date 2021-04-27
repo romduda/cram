@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import { StyleSheet, TextInput, View, TouchableOpacity, Text } from 'react-native';
+import { StyleSheet, TextInput, View, TouchableOpacity, Text, Alert } from 'react-native';
 
 export default function Login({ navigation, modalVisible, setModalVisible, arrowVisible, setArrowVisible}: any) {
   const [username, setUsername] = useState('');
@@ -30,6 +30,15 @@ export default function Login({ navigation, modalVisible, setModalVisible, arrow
               setModalVisible(!modalVisible);
               setTimeout(() => setArrowVisible(!arrowVisible), 700);
               setTimeout(() => navigation.push('Cram', { paramA: username }), 300);
+            } else {
+              return Alert.alert(
+                "Incorrect username or password.",
+                "Please try again.",
+                [
+                  { text: "OK"}
+                ],
+                { cancelable: false }
+              );
             }
           }
           }
