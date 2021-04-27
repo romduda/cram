@@ -107,7 +107,7 @@ export default function Main ({ navigation }: any) {
             }}
           >
           <CustomText>
-            CRAM!
+            CRAM
           </CustomText>
           </TouchableOpacity>
         </View>
@@ -141,6 +141,7 @@ const styles = StyleSheet.create({
   },
   buttonContainer: {
     width: '79%',
+    marginBottom: 30
   },
   cramButton: {
     backgroundColor: 'red',
@@ -178,7 +179,7 @@ const styles = StyleSheet.create({
     flex: 1,
     width: '79%',
     marginTop: 75,
-    marginBottom: 55,
+    marginBottom: 25,
     borderRadius: 5,
     overflow: 'hidden',
   },
