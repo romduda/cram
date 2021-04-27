@@ -190,7 +190,7 @@ const styles = StyleSheet.create({
     // borderWidth: 1,
     // borderColor: 'white',
     borderRadius: 5,
-    backgroundColor: 'blue',
+    backgroundColor: '#3333FF',
     paddingHorizontal: 30,
   }
 })

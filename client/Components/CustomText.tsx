@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     color: 'white',
     height: '100%',
-    backgroundColor: 'blue',
+    backgroundColor: '#3333FF',
     // flex: 1,
     padding: 13,
   }
