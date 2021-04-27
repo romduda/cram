@@ -27,8 +27,8 @@ export const Crammed:any = ({ route, navigation }: any) => {
               <Text style={styles.tips}>Cheatsheet</Text>
               {topic.bullets.map((bullet:string) => {
                 return (
-                  <View style={styles.bullet}>
-                    <Text key={bullet} style={styles.bulletText}>{'\u25CF'}  {bullet}</Text>
+                  <View key={bullet}style={styles.bullet}>
+                    <Text style={styles.bulletText}>{'\u25CF'}  {bullet}</Text>
                   </View>
                 )
               })}
