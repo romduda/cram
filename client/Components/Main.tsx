@@ -121,7 +121,7 @@ const styles = StyleSheet.create({
   bigContainer: {
     flex: 1,
     alignItems: 'center',
-    backgroundColor: 'black'
+    backgroundColor: '#22272E'
   },
   container: {
     flex: 1,
@@ -166,7 +166,7 @@ const styles = StyleSheet.create({
   },
   imageModal: {
     flex: 1,
-    backgroundColor: "black",
+    backgroundColor: '#22272E',
     paddingVertical: 20,
     display: 'flex',
     alignItems: 'center',

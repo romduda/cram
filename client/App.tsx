@@ -23,7 +23,7 @@ export default function App() {
     <NavigationContainer>
       <Root.Navigator initialRouteName="Home" >
         <Root.Screen name="Home" component={Home} options={{ headerShown: false }}/>
-        <Root.Screen name="Cram" component={Cram} options={{ headerStyle: {backgroundColor: 'black'}, headerTitleStyle: {fontWeight: 'bold', color: 'white'}, headerRight: () => <HeaderBtn/> }}/>
+        <Root.Screen name="Cram" component={Cram} options={{ headerStyle: {backgroundColor: '#22272E'}, headerTitleStyle: {fontWeight: 'bold', color: 'white', fontFamily: 'Optima-Bold', fontSize: 22}, headerRight: () => <HeaderBtn/> }}/>
         <Root.Screen name="Crammed" component={Crammed} options={{headerBackTitle: 'Back', headerTitle:'',headerRight: () => <HeaderBtn/> }} />
       </Root.Navigator>
     </NavigationContainer>
