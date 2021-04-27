@@ -140,18 +140,17 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   buttonContainer: {
-    width: '70%',
+    width: '79%',
   },
   cramButton: {
     backgroundColor: 'red',
     borderRadius: 10,
-    // padding: 10,
-    height: 50,
+    height: 50
   },
   cancelContainer: {
     display: 'flex',
     flexDirection: 'row',
-    padding: 20
+    padding: 10
   },
   flip: {
     display: 'flex',
@@ -167,20 +166,20 @@ const styles = StyleSheet.create({
   imageModal: {
     flex: 1,
     backgroundColor: "black",
-    paddingVertical: 80,
+    paddingVertical: 20,
     display: 'flex',
     alignItems: 'center',
 
   },
   imageContainer: {
-    // backgroundColor: "#000000aa",
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
     flex: 1,
-    width: '70%',
-    margin: 40,
-    borderRadius: 10,
+    width: '79%',
+    marginTop: 75,
+    marginBottom: 55,
+    borderRadius: 5,
     overflow: 'hidden',
   },
   image: {
