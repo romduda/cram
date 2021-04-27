@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View, Modal, Alert, ImageBackground } from 'react-native';
+import { StyleSheet, Text, View, Modal, Alert, ImageBackground, TouchableOpacity } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-import { Button } from 'react-native-elements';
+// import { Button } from 'react-native-elements';
 import Spinner from 'react-native-loading-spinner-overlay';
 import { Camera } from 'expo-camera';
 import { cramToApi, apolloClient } from '../Services/ApiService';
 import Topic from '../Interfaces/Topic';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import CustomText from './CustomText';
+// import { TouchableOpacity } from 'react-native-gesture-handler';
 
 export default function Main ({ navigation }: any) {
   const [hasPermission, setHasPermission] = useState(false);
@@ -56,16 +57,16 @@ export default function Main ({ navigation }: any) {
                   : Camera.Constants.Type.back
               );
             }}>
-            <Ionicons name="camera-reverse-outline" color="white" size={32}/>
+            <Ionicons name="camera-reverse-outline" color="white" size={38}/>
           </TouchableOpacity>
         </Camera>
       </View>
-      <Button
-        title="Take Picture"
+      <TouchableOpacity
         style={styles.button}
-        type="outline"
         onPress={() => takePicture()}
-      />
+      >
+        <Ionicons name="radio-button-on-outline" color="white" size={72}></Ionicons>
+      </TouchableOpacity>
       <Modal
         transparent={false}
         visible={modalVisible}
@@ -82,31 +83,33 @@ export default function Main ({ navigation }: any) {
               <Ionicons name="ios-close" color="white" size={32}/>
             </TouchableOpacity>
           </ImageBackground>
-          <View style={styles.buttonContainer}>
-            <Button
-              title="Cram!"
-              type="outline"
-              onPress={async () => {
-                setLoading(true);
-                const topic = await cramToApi(imageURI);
-                if (topic.title === 'Error') {
-                  return Alert.alert(
-                    "Text not recognised",
-                    "If you are sure text is readable, try cram again. Otherwise, please take another photo.",
-                    [
-                      { text: "OK" ,  onPress: () => setLoading(false)}
-                    ],
-                    { cancelable: false }
-                  );
-                }
-                  setTopic(topic);
-                  setModelVisible(false);
-                  navigation.push('Crammed', { paramC: topic })
-                  return setLoading(false);
-              }}
-            >
-            </Button>
-          </View>
+        </View>
+        <View style={styles.buttonContainer}>
+          <TouchableOpacity
+            style={styles.cramButton}
+            onPress={async () => {
+              setLoading(true);
+              const topic = await cramToApi(imageURI);
+              if (topic.title === 'Error') {
+                return Alert.alert(
+                  "Text not recognised",
+                  "If you are sure text is readable, try cram again. Otherwise, please take another photo.",
+                  [
+                    { text: "OK" ,  onPress: () => setLoading(false)}
+                  ],
+                  { cancelable: false }
+                );
+              }
+                setTopic(topic);
+                setModelVisible(false);
+                navigation.push('Crammed', { paramC: topic })
+                return setLoading(false);
+            }}
+          >
+          <CustomText>
+            CRAM!
+          </CustomText>
+          </TouchableOpacity>
         </View>
       </View>
       </Modal>
@@ -137,8 +140,13 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   buttonContainer: {
-    width: '100%',
-    margin: 20,
+    width: '70%',
+  },
+  cramButton: {
+    backgroundColor: 'red',
+    borderRadius: 10,
+    // padding: 10,
+    height: 50,
   },
   cancelContainer: {
     display: 'flex',
@@ -153,11 +161,16 @@ const styles = StyleSheet.create({
   button: {
     width: 300,
     paddingBottom: 15,
+    display: 'flex',
+    alignItems: 'center'
   },
   imageModal: {
     flex: 1,
     backgroundColor: "black",
     paddingVertical: 80,
+    display: 'flex',
+    alignItems: 'center',
+
   },
   imageContainer: {
     // backgroundColor: "#000000aa",
@@ -165,21 +178,16 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     flex: 1,
-    marginHorizontal: 40,
+    width: '70%',
+    margin: 40,
     borderRadius: 10,
     overflow: 'hidden',
-    // borderWidth: 1
   },
   image: {
-    width: '103%',
+    width: '100%',
     height: '100%',
     flex: 1,
-    // borderWidth: 1
-  },
-  buttonsFlex: {
-    flex: 1,
-    display: 'flex',
-    flexDirection: "row",
+    borderRadius: 5,
   },
   spinnerTextStyle: {
     color: 'white',
