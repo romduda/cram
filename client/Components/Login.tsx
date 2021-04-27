@@ -30,9 +30,8 @@ export default function Login({ navigation, modalVisible, setModalVisible, arrow
           style={styles.btn}
           onPress={() => {
             setModalVisible(!modalVisible);
-            setTimeout(() => setArrowVisible(!arrowVisible), 300);
-            setTimeout(() => navigation.push('Cram', { paramA: 'Hello!' }), 200);
-
+            setTimeout(() => setArrowVisible(!arrowVisible), 700);
+            setTimeout(() => navigation.push('Cram', { paramA: 'Hello!' }), 300);
           }
           }
           >
