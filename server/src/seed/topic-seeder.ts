@@ -66,8 +66,10 @@ const seedDb = async () => {
           return request.auth.user;
         }`,
         `{
-        "me": { "name": "Luke Skywalker" }
-        }`
+        "me": {
+          "name": "Luke Skywalker"
+        }
+      }`
       ]
     }),
     new Topic({
@@ -84,15 +86,12 @@ const seedDb = async () => {
     }),
     new Topic({
       title: 'REST',
-      url: 'https://www.youtube.com/watch?v=qbLc5a9jdXo',
+      url: 'https://www.youtube.com/watch?v=Q-BpqyOT3a8',
       related: ['GraphQL', 'HTTP'],
       bullets: [
         `200 OK; 201 Created; 202 Accepted; 204 No content; 206 Partial content`,
         `401 Unauthorized; 403 Forbidden; 422 Unprocessable entity`,
-        `GET;
-      PUT;
-      DELETE;
-      POST`
+        `GET; PUT; DELETE; POST`
       ]
     }),
     new Topic({
