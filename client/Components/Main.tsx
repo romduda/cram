@@ -95,8 +95,8 @@ export default function Main ({ navigation, route }: any) {
               const topic = await cramToApi(imageURI);
               if (topic.title === 'Error') {
                 return Alert.alert(
-                  "Text not recognised",
-                  "If you are sure text is readable, try cram again. Otherwise, please take another photo.",
+                  "No text found!",
+                  "Try taking another photo",
                   [
                     { text: "OK" ,  onPress: () => setLoading(false)}
                   ],
