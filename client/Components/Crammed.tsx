@@ -20,7 +20,6 @@ export const Crammed:any = ({ route, navigation }: any) => {
             </View>
             :
             <View style={styles.found}>
-              {/* <Text style={styles.caption}>Andre told you to read the docs again didnt he? Don't worry - Cram is here to the rescue!</Text> */}
               <WebView source={{ uri: topic.url }} style={styles.webview} />
             </View>
             }
@@ -28,11 +27,13 @@ export const Crammed:any = ({ route, navigation }: any) => {
               <Text style={styles.tips}>Cheatsheet</Text>
               {topic.bullets.map((bullet:string) => {
                 return (
-                  <Text key={bullet} style={styles.bullet}>{'\u25CF'}  {bullet}</Text>
+                  <View style={styles.bullet}>
+                    <Text key={bullet} style={styles.bulletText}>{'\u25CF'}  {bullet}</Text>
+                  </View>
                 )
               })}
             </View>
-            <Text style={{fontSize: 22, fontWeight: '500', color:'white', fontFamily: 'Optima-Bold',}}>Related Topics</Text>
+            <Text style={{fontSize: 22, fontWeight: '500', color:'white', fontFamily: 'Optima-Bold', marginTop: 30}}>Related Topics</Text>
             <View style={styles.relatedContainer}>
               {topic.related.map((relatedTopic:string) => {
                 return (
@@ -102,9 +103,9 @@ const styles = StyleSheet.create({
     // paddingHorizontal: 50,
     display: 'flex',
     justifyContent: 'space-between',
-    flex: 1,
+    // flex: 1,
     alignItems: 'center',
-    height: 1200,
+    // height: 1200,
     // borderWidth: 1,
     // borderColor: 'white'
     marginBottom: 50,
@@ -125,12 +126,10 @@ const styles = StyleSheet.create({
     paddingVertical: 30,
   },
   bulletContainer: {
-    flex: 1,
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'flex-start',
     width: 300,
-    height: 300,
     borderWidth: 1,
     margin: 40,
     paddingBottom: 20,
@@ -148,22 +147,19 @@ const styles = StyleSheet.create({
   bullet: {
     textAlign: 'left',
     width: '95%',
-    height: '100%',
     borderRadius: 5,
-    flex: 1,
     margin: 5,
-    fontSize: 12,
-    alignSelf: 'center',
+  },
+  bulletText: {
     color:'white',
+    fontSize: 14,
     fontFamily: 'Optima-Bold',
+    padding: 10,
   },
   scroll: {
     display: 'flex',
     flex: 1,
     width: '100%'
-  },
-  caption: {
-    padding: 10
   },
   relatedContainer: {
     display: 'flex',
@@ -171,7 +167,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     // height: 300,
     width: 300,
-    margin: 10,
+    marginTop: 30,
     // borderColor: 'white',
     // borderWidth: 1
     // paddingVertical: 20,
