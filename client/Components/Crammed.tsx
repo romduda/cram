@@ -33,7 +33,7 @@ export const Crammed:any = ({ route, navigation }: any) => {
                 )
               })}
             </View>
-            <Text style={{fontSize: 22, fontWeight: '500', color:'white', fontFamily: 'Optima-Bold', marginTop: 30}}>Related Topics</Text>
+            <Text style={{fontSize: 22, fontWeight: '500', color:'white', fontFamily: 'Optima-Bold', marginTop: 20}}>Related Topics</Text>
             <View style={styles.relatedContainer}>
               {topic.related.map((relatedTopic:string) => {
                 return (
