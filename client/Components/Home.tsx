@@ -1,12 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { StackScreenProps } from '@react-navigation/stack';
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, Modal } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import CustomText from '../Components/CustomText';
+import Login from './Login';
 // import { Button } from 'react-native-elements';
 import { Video } from "expo-av";
 
 export const Home = ({ navigation }:any) => {
+  const [modalVisible, setModalVisible] = useState(false);
+  const [arrowVisible, setArrowVisible] = useState(false);
   return (
     <View style={styles.container}>
       <Video
@@ -16,7 +19,6 @@ export const Home = ({ navigation }:any) => {
       shouldPlay={true}
       isLooping={true}
       volume={0}
-      // muted={true}
       resizeMode="cover"
       />
       <Text
@@ -26,11 +28,25 @@ export const Home = ({ navigation }:any) => {
       </Text>
       <TouchableOpacity
       style={styles.btn}
-      onPress={() => navigation.push('Cram', { paramA: 'Hello!' })
-      }>
-      <CustomText>Log In</CustomText>
+      onPress={() => {
+        setArrowVisible(!arrowVisible);
+        return setModalVisible(!modalVisible);
+      }}>
+      <CustomText>
+        {arrowVisible ? <Ionicons name="arrow-forward-outline"
+            size={32}></Ionicons> : "Log In" }
+        </CustomText>
       </TouchableOpacity>
-
+      <View style= {styles.modalContainer}>
+        <Modal
+          style={styles.modal}
+          animationType="slide"
+          transparent={true}
+          visible={modalVisible}
+        >
+          <Login navigation={navigation} setModalVisible={setModalVisible} modalVisible={modalVisible} setArrowVisible={setArrowVisible} arrowVisible={arrowVisible}></Login>
+        </Modal>
+      </View>
     </View>
   )
 }
@@ -67,4 +83,15 @@ const styles = StyleSheet.create({
     bottom: 0,
     right: 0,
   },
+  modal: {
+    flex: 1,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'flex-end',
+  },
+  modalContainer: {
+    display: 'flex',
+    justifyContent: 'flex-end',
+    // margin: 100,
+  }
 })
