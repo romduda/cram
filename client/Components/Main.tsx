@@ -121,7 +121,7 @@ const styles = StyleSheet.create({
   bigContainer: {
     flex: 1,
     alignItems: 'center',
-    backgroundColor: '#22272E'
+    backgroundColor: '#1F1F1F'
   },
   container: {
     flex: 1,
@@ -144,7 +144,6 @@ const styles = StyleSheet.create({
     marginBottom: 30
   },
   cramButton: {
-    backgroundColor: 'red',
     borderRadius: 10,
     height: 50
   },
@@ -166,7 +165,7 @@ const styles = StyleSheet.create({
   },
   imageModal: {
     flex: 1,
-    backgroundColor: '#22272E',
+    backgroundColor: '#1F1F1F',
     paddingVertical: 20,
     display: 'flex',
     alignItems: 'center',

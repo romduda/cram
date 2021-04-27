@@ -19,7 +19,7 @@ export default function HeaderBtn () {
 
 const styles = StyleSheet.create({
   logOutBtn: {
-    // borderWidth: 1,
+    fontFamily: 'Optima-Bold',
     borderRadius: 5,
     marginHorizontal: 7,
     // marginVertical: 5
