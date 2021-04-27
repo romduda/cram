@@ -1,5 +1,5 @@
 const magic = function (str: string): {title: string} {
-  const topicTitles: Array<string> = ['Koa', 'Node', 'Express', 'Apollo', 'REST', 'HTTP', 'MongoDB', 'SQL'];
+  const topicTitles: Array<string> = ['Koa', 'Node', 'Express', 'GraphQL','Apollo', 'REST', 'HTTP', 'MongoDB', 'SQL'];
   const arrOfWords: Array <string> = str.split('\n').flatMap(line => line.split(' '));
   const scores = topicTitles.map(topic => {
     let score: number = 0;
