@@ -29,43 +29,72 @@ const seedDb = async () => {
       title: 'Koa',
       url: 'https://www.youtube.com/watch?v=z84uTk5zmak',
       related: ['Express', 'Node'],
-      bullets: ['bullet1', 'bullet2']
+      bullets: [
+        `const Koa = require('koa');`,
+        `const app = new Koa();`,
+        `app.use(ctx => {ctx.body = 'Hello World';});`,
+        `app.listen(3000, () => console.log('server started on port 3000'));`
+      ]
     }),
     new Topic({
       title: 'Node',
       url: 'https://www.youtube.com/watch?v=TlB_eWDSMt4',
       related: ['Koa', 'Express'],
-      bullets: ['bullet1', 'bullet2']
+      bullets: [
+        `const Koa = require('koa'); const app = new Koa();`,
+        `app.use(ctx => {ctx.body = 'Hello World';});`,
+        `app.listen(3000, () => console.log('server started on port 3000'));`
+      ]
     }),
     new Topic({
       title: 'GraphQL',
       url: 'https://www.youtube.com/watch?v=Y0lDGjwRYKw',
       related: ['Apollo', 'REST'],
-      bullets: ['bullet1', 'bullet2']
+      bullets: [
+        `const Koa = require('koa'); const app = new Koa();`,
+        `app.use(ctx => {ctx.body = 'Hello World';});`,
+        `app.listen(3000, () => console.log('server started on port 3000'));`
+      ]
     }),
     new Topic({
       title: 'Apollo',
       url: 'https://www.youtube.com/watch?v=mSzUb7f47qk',
       related: ['GraphQL', 'Express'],
-      bullets: ['bullet1', 'bullet2']
+      bullets: [
+        `const Koa = require('koa'); const app = new Koa();`,
+        `app.use(ctx => {ctx.body = 'Hello World';});`,
+        `app.listen(3000, () => console.log('server started on port 3000'));`
+      ]
     }),
     new Topic({
       title: 'REST',
       url: 'https://www.youtube.com/watch?v=qbLc5a9jdXo',
       related: ['GraphQL', 'HTTP'],
-      bullets: ['bullet1', 'bullet2']
+      bullets: [
+        `const Koa = require('koa'); const app = new Koa();`,
+        `app.use(ctx => {ctx.body = 'Hello World';});`,
+        `app.listen(3000, () => console.log('server started on port 3000'));`
+      ]
     }),
     new Topic({
       title: 'HTTP',
       url: 'https://www.youtube.com/watch?v=iYM2zFP3Zn0',
       related: ['GraphQL', 'REST'],
-      bullets: ['bullet1', 'bullet2']
+      bullets: [
+        `const Koa = require('koa'); const app = new Koa();`,
+        `app.use(ctx => {ctx.body = 'Hello World';});`,
+        `app.listen(3000, () => console.log('server started on port 3000'));`
+      ]
     }),
     new Topic({
       title: 'SQL',
       url: 'https://www.youtube.com/watch?v=HXV3zeQKqGY',
       related: ['MongoDB', 'Sequelize'],
-      bullets: ['bullet1', 'bullet2']
+      bullets: [
+        `const Koa = require('koa'); const app = new Koa();`,
+        `app.use(ctx => {ctx.body = 'Hello World';});`,
+        `app.listen(3000, () => console.log('server started on port 3000'));`
+      ]
     }),
     new Topic({
       title: 'MongoDB',
