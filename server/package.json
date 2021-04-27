@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/raphaelj274/Cram#readme",
   "dependencies": {
+    "@google-cloud/vision": "^2.3.1",
     "apollo-server": "^2.23.0",
     "dot-env": "^0.0.1",
     "dotenv": "^8.2.0",
