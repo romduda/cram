@@ -30,7 +30,6 @@ const cramToApi = async function (imageURI: string): Promise<any> {
 };
 
 const furtherTopics = async function (title: string): Promise<any> {
-  console.log("request made");
   return apolloClient
     .query({
       query: gql`
