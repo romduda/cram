@@ -1,6 +1,5 @@
 import React from 'react';
 import { StyleSheet, Text, View, ScrollView, TouchableOpacity } from 'react-native';
-import { Button } from 'react-native-elements';
 import { WebView } from 'react-native-webview';
 import { furtherTopics } from '../Services/ApiService';
 import CustomText from './CustomText';
@@ -95,14 +94,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   videoContainer: {
-    // paddingHorizontal: 50,
     display: 'flex',
     justifyContent: 'space-between',
-    // flex: 1,
     alignItems: 'center',
-    // height: 1200,
-    // borderWidth: 1,
-    // borderColor: 'white'
     marginBottom: 50,
   },
   webview: {
@@ -160,18 +154,12 @@ const styles = StyleSheet.create({
     display: 'flex',
     justifyContent: 'flex-start',
     alignItems: 'center',
-    // height: 300,
     width: 300,
     marginTop: 30,
-    // borderColor: 'white',
-    // borderWidth: 1
-    // paddingVertical: 20,
   },
   relatedBtn: {
     borderWidth: 1,
     borderColor: 'white',
-    // display: 'flex',
-    // flex: 1,
     margin: 5,
     justifyContent: 'center',
     alignItems: 'center',
@@ -187,8 +175,6 @@ const styles = StyleSheet.create({
   againBtn: {
     width: '100%',
     height: 55,
-    // borderWidth: 1,
-    // borderColor: 'white',
     borderRadius: 5,
     backgroundColor: '#3333FF',
     paddingHorizontal: 30,

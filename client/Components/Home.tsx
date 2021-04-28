@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
-import { StackScreenProps } from '@react-navigation/stack';
 import { StyleSheet, Text, View, TouchableOpacity, Modal } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import CustomText from '../Components/CustomText';
 import Login from './Login';
-// import { Button } from 'react-native-elements';
 import { Video } from "expo-av";
 
 export const Home = ({ navigation }:any) => {

@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, Modal, Alert, ImageBackground, TouchableOpacity } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-// import { Button } from 'react-native-elements';
 import Spinner from 'react-native-loading-spinner-overlay';
 import { Camera } from 'expo-camera';
-import { cramToApi, apolloClient } from '../Services/ApiService';
+import { cramToApi } from '../Services/ApiService';
 import Topic from '../Interfaces/Topic';
 import CustomText from './CustomText';
-// import { TouchableOpacity } from 'react-native-gesture-handler';
 
 export default function Main ({ navigation, route }: any) {
   const [hasPermission, setHasPermission] = useState(false);
@@ -206,6 +204,5 @@ const styles = StyleSheet.create({
   spinnerTextStyle: {
     color: 'white',
     fontWeight: '200'
-  },
-
+  }
 });

@@ -1,5 +1,5 @@
-import React, {useState} from 'react'
-import { StyleSheet, TextInput, View, TouchableOpacity, Text, Alert } from 'react-native';
+import React, {useState} from 'react';
+import { StyleSheet, TextInput, View, TouchableOpacity, Alert } from 'react-native';
 
 export default function Login({ navigation, modalVisible, setModalVisible, arrowVisible, setArrowVisible}: any) {
   const [username, setUsername] = useState('');

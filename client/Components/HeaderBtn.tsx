@@ -1,19 +1,10 @@
 import React from 'react'
-import { StyleSheet, Touchable, TouchableOpacity, Text } from 'react-native';
-import { Button } from 'react-native-elements';
+import { StyleSheet, TouchableOpacity, Text } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 export default function HeaderBtn () {
   const navigation = useNavigation();
   return (
-    // <Button
-    //   style={styles.logOutBtn}
-    //   title="Logout"
-    //   type="clear"
-      // onPress={() => {
-      //   navigation.navigate('Home');
-      // }}
-    // />
     <TouchableOpacity
       style={styles.logOutBtn}
       onPress={() => {

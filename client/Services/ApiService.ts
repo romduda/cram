@@ -2,7 +2,7 @@ import { ApolloClient, InMemoryCache, gql } from '@apollo/client';
 import pathToBase64 from './ImageService';
 
 const apolloClient = new ApolloClient({
-  uri: 'http://10.153.104.135:4000/',
+  uri: 'http://192.168.8.107:4000/',
   cache: new InMemoryCache()
 });
 
@@ -23,10 +23,8 @@ const cramToApi = async function (imageURI: string): Promise<any> {
       }
     `,
     fetchPolicy: "network-only"
-  }).then(result => {
-    console.log('heres the topic : ', result.data.topics[0]);
-    return result.data.topics[0];
-  }).catch(err => console.error(err));
+  }).then(result => result.data.topics[0])
+    .catch(err => console.error(err));
 }
 
 const furtherTopics = async function (title: string): Promise<any> {
@@ -43,10 +41,8 @@ const furtherTopics = async function (title: string): Promise<any> {
       }
     `,
     fetchPolicy: "network-only"
-  }).then(result => {
-    console.log('heres the topic : ', result.data.furtherTopics[0]);
-    return result.data.furtherTopics[0];
-  }).catch(err => console.error(err));
+  }).then(result => result.data.furtherTopics[0])
+    .catch(err => console.error(err));
 }
 
 export { cramToApi, furtherTopics, apolloClient }

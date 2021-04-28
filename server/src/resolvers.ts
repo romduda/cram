@@ -5,7 +5,6 @@ import visionApi from './visionApi';
 export const resolvers = {
   Query: {
     topics: async (_:null, args:{input: {title: string}}) => {
-      console.log('in the bckend');
       const { input } = args;
       const googleStr = await visionApi(input.title);
       if (!googleStr) return await Topic.find({title: 'Error'}).exec();
