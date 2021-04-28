@@ -1,21 +1,19 @@
-import React from 'react'
-import { StyleSheet, TouchableOpacity, Text } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import React from "react";
+import { StyleSheet, TouchableOpacity, Text } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
-export default function HeaderBtn () {
+export default function HeaderBtn() {
   const navigation = useNavigation();
   return (
     <TouchableOpacity
       style={styles.logOutBtn}
       onPress={() => {
-        navigation.navigate('Home');
+        navigation.navigate("Home");
       }}
     >
-      <Text style={styles.btnText}>
-        Logout
-      </Text>
+      <Text style={styles.btnText}>Logout</Text>
     </TouchableOpacity>
-  )
+  );
 }
 
 const styles = StyleSheet.create({
@@ -24,8 +22,8 @@ const styles = StyleSheet.create({
     marginHorizontal: 15,
   },
   btnText: {
-    fontFamily: 'Optima-Bold',
+    fontFamily: "Optima-Bold",
     fontSize: 16,
-    color: 'white',
-  }
-})
+    color: "white",
+  },
+});

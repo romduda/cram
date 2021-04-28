@@ -1,7 +1,6 @@
-import { gql } from 'apollo-server';
+import { gql } from "apollo-server";
 
 export const typeDefs = gql`
-
   type Topic {
     id: ID!
     title: String
@@ -18,5 +17,4 @@ export const typeDefs = gql`
     topics(input: TopicInput): [Topic]
     furtherTopics(input: TopicInput): [Topic]
   }
-
 `;
