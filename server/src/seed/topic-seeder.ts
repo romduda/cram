@@ -5,16 +5,19 @@ const seedDb = async () => {
   await Topic.remove({});
 
   const topics = [
+
     new Topic({
       title: 'Error',
       url: 'Sorry text not recognised, please try again',
       related: []
     }),
+
     new Topic({
       title: 'Not Found',
       url: 'Sorry no materials available at present. Check out some of the other available materials!',
       related: ['Koa', 'Node', 'Express', 'Apollo', 'REST', 'HTTP', 'MongoDB', 'SQL']
     }),
+
     new Topic({
       title: 'Express',
       url: 'https://www.youtube.com/watch?v=L72fhGm1tfE',
@@ -25,6 +28,7 @@ const seedDb = async () => {
         `app.get('/', (req, res) => res.send('Hello World!'))`
       ]
     }),
+
     new Topic({
       title: 'Koa',
       url: 'https://www.youtube.com/watch?v=z84uTk5zmak',
@@ -36,6 +40,7 @@ const seedDb = async () => {
         `app.listen(3000, () => console.log('server started on port 3000'));`
       ]
     }),
+
     new Topic({
       title: 'Node',
       url: 'https://www.youtube.com/watch?v=TlB_eWDSMt4',
@@ -54,6 +59,7 @@ const seedDb = async () => {
         });`
       ]
     }),
+
     new Topic({
       title: 'GraphQL',
       url: 'https://www.youtube.com/watch?v=Y0lDGjwRYKw',
@@ -72,6 +78,7 @@ const seedDb = async () => {
       }`
       ]
     }),
+
     new Topic({
       title: 'Apollo',
       url: 'https://www.youtube.com/watch?v=mSzUb7f47qk',
@@ -84,6 +91,7 @@ const seedDb = async () => {
         `const { loading, error, data } = useQuery(EXCHANGE_RATES);`
       ]
     }),
+
     new Topic({
       title: 'REST',
       url: 'https://www.youtube.com/watch?v=Q-BpqyOT3a8',
@@ -94,6 +102,7 @@ const seedDb = async () => {
         `GET; PUT; DELETE; POST`
       ]
     }),
+
     new Topic({
       title: 'HTTP',
       url: 'https://www.youtube.com/watch?v=iYM2zFP3Zn0',
@@ -104,6 +113,7 @@ const seedDb = async () => {
         `Due to its extensibility, it is used to not only fetch hypertext documents, but also images and videos or to post content to servers, like with HTML form results. HTTP can also be used to fetch parts of documents to update Web pages on demand.`
       ]
     }),
+
     new Topic({
       title: 'SQL',
       url: 'https://www.youtube.com/watch?v=HXV3zeQKqGY',
@@ -116,6 +126,7 @@ const seedDb = async () => {
         `DROP TABLE users;`
       ]
     }),
+
     new Topic({
       title: 'MongoDB',
       url: 'https://www.youtube.com/watch?v=-56x56UppqQ',
@@ -135,16 +146,12 @@ const seedDb = async () => {
         })`
       ]
     }),
+
   ];
 
   for (let i=0; i<topics.length; i++) {
     await topics[i].save();
   }
-
-  (async () => {
-    const data = await Topic.find({});
-    console.log(data);
-  })();
 
 }
 
