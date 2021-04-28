@@ -1,5 +1,9 @@
 import mongoose from "mongoose";
-mongoose.connect("mongodb://localhost/cramdb", {
+
+const host: string = process.env.HOST || "localhost";
+const dbName: string = process.env.DATABASE_NAME || "cramdb";
+
+mongoose.connect(`mongodb://${host}/${dbName}`, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
