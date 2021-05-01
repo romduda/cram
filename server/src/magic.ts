@@ -1,4 +1,4 @@
-const magic = function (str: string): { title: string } {
+ const magic = function (str: string): { title: string } {
   const topicTitles: Array<string> = [
     "Koa",
     "Node",
