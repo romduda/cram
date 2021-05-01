@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[` 1`] = `
+<View>
+  <Text>
+    Hello
+  </Text>
+</View>
+`;
+
+exports[`TestComponent 1`] = `
+<View>
+  <Text>
+    Hello
+  </Text>
+</View>
+`;
