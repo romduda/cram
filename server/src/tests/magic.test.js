@@ -2,8 +2,6 @@
 const magicObj = require('../magic');
 const magic = magicObj.default;
 
-console.log('magic', magic);
-
 const { loremIpsum } = require('./mocks');
 
 describe('function magic', () => {
