@@ -25,6 +25,9 @@ export default function Main({ navigation, route }: any) {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+    
+    console.log('main comp mount');
+    
     (async () => {
       const { status } = await Camera.requestPermissionsAsync();
       setHasPermission(status === "granted");
@@ -32,6 +35,8 @@ export default function Main({ navigation, route }: any) {
   }, []);
 
   const takePicture = async () => {
+    console.log('main camera takepicture');
+    
     if (camera) {
       const picture = await camera.takePictureAsync();
       setImageURI(picture.uri);
@@ -39,17 +44,24 @@ export default function Main({ navigation, route }: any) {
     }
   };
 
-  if (hasPermission === null) {
-    return <View />;
-  }
+  //TODO DELETE
+  // if (hasPermission === null) {
+  //   console.log('main View being called to render');
+    
+  //   return <View />;
+  // }
+
   if (hasPermission === false) {
+    console.log('main View no access to render');
     return <Text>No access to camera</Text>;
   }
 
   return (
+    
     <View style={styles.bigContainer}>
       <View style={styles.container}>
-        <Camera ref={(ref) => setCamera(ref)} style={styles.camera} type={type}>
+        
+       <Camera ref={(ref) => setCamera(ref)} style={styles.camera} type={type} testID="expo-camera">
           <TouchableOpacity
             style={styles.flip}
             onPress={() => {
@@ -66,7 +78,7 @@ export default function Main({ navigation, route }: any) {
             <Text style={styles.imageText}>
               {" "}
               Hi {route.params.paramA}, what do you need to cram?{" "}
-            </Text>
+            </Text> 
           </View>
         </Camera>
       </View>

@@ -27,6 +27,7 @@ export const Home = ({ navigation }: any) => {
           setArrowVisible(!arrowVisible);
           return setModalVisible(!modalVisible);
         }}
+        
       >
         <CustomText>
           {arrowVisible ? (
