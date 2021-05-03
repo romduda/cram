@@ -19,7 +19,7 @@ export default function Main({ navigation, route }: any) {
   const [hasPermission, setHasPermission] = useState(false);
   const [camera, setCamera] = useState<Camera | null>(null);
   const [imageURI, setImageURI] = useState("");
-  const [modalVisible, setModelVisible] = useState(false);
+  const [modalVisible, setModalVisible] = useState(false);
   const [type, setType] = useState(Camera.Constants.Type.back);
   const [topic, setTopic] = useState<Topic | null>(null);
   const [loading, setLoading] = useState(false);
@@ -35,7 +35,7 @@ export default function Main({ navigation, route }: any) {
     if (camera) {
       const picture = await camera.takePictureAsync();
       setImageURI(picture.uri);
-      setModelVisible(true);
+      setModalVisible(true);
     }
   };
 
@@ -87,7 +87,7 @@ export default function Main({ navigation, route }: any) {
           <View style={styles.imageContainer}>
             <ImageBackground source={{ uri: imageURI }} style={styles.image}>
               <TouchableOpacity
-                onPress={() => setModelVisible(false)}
+                onPress={() => setModalVisible(false)}
                 style={styles.cancelContainer}
               >
                 <Ionicons name="ios-close" color="white" size={32} />
@@ -109,7 +109,7 @@ export default function Main({ navigation, route }: any) {
                   );
                 }
                 setTopic(topic);
-                setModelVisible(false);
+                setModalVisible(false);
                 navigation.push("Crammed", { paramC: topic });
                 return setLoading(false);
               }}
