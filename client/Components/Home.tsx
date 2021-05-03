@@ -49,6 +49,7 @@ export const Home = ({ navigation }: any) => {
           animationType="slide"
           transparent={true}
           visible={modalVisible}
+          testID="modal-login"
         >
           <Login
             navigation={navigation}

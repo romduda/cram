@@ -1,4 +1,5 @@
 import React from 'react';
+import { Alert } from 'react-native';
 import { render, fireEvent } from '@testing-library/react-native';
 import { MockedProvider } from '@apollo/client/testing';
 import { Home } from '../Home';
@@ -39,9 +40,22 @@ it('log in button says "Log In" before press, and shows arrow icon after press',
   fireEvent.press(loginBtn);
   expect(() => getByText('Log In')).toThrow();
   getByTestId('arrow-icon');
-})
+});
 
 
+
+
+// const video = require('./video');
+
+// test('plays video', () => {
+//   const spy = jest.spyOn(video, 'play');
+//   const isPlaying = video.play();
+
+//   expect(spy).toHaveBeenCalled();
+//   expect(isPlaying).toBe(true);
+
+//   spy.mockRestore();
+// });
 
 // import React from "react";
 // import {
