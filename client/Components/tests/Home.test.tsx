@@ -1,19 +1,17 @@
 import React from 'react';
-import { render } from '@testing-library/react-native';
+import { render, fireEvent } from '@testing-library/react-native';
 import { MockedProvider } from '@apollo/client/testing';
 import { Home } from '../Home';
 
 
-it('There is a button with "Log In" on home page', () => {
+it('there is a button with "Log In" on home page', () => {
   // arrange
   const { getByText } = render(
     <MockedProvider>
       <Home />
     </MockedProvider>
-
   );
   // expect(() => getByText('Log In')).not.toThrow();
-  // const loginButton = getByText('Log In');
   getByText('Log In');
 
   // act
@@ -21,6 +19,27 @@ it('There is a button with "Log In" on home page', () => {
 });
 
 
+it('there is a video component on the home page', () => {
+  const { getByTestId } = render(
+    <MockedProvider>
+      <Home />
+    </MockedProvider>
+  );
+  getByTestId('background-video');
+})
+
+it('log in button says "Log In" before press, and shows arrow icon after press', () => {
+  const { getByText, getByTestId, debug } = render(
+    <MockedProvider>
+      <Home />
+    </MockedProvider>
+  );
+  const loginBtn = getByText('Log In');
+  expect(() => getByTestId('arrow-icon')).toThrow();
+  fireEvent.press(loginBtn);
+  expect(() => getByText('Log In')).toThrow();
+  getByTestId('arrow-icon');
+})
 
 
 
