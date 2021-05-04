@@ -7,6 +7,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import fetchMock from 'jest-fetch-mock';
 import 'react-native-gesture-handler/jestSetup';
 import { AppWrapper } from './App';
+import { Camera } from "expo-camera";
 
 
 
@@ -40,12 +41,19 @@ describe('<App />', () => {
     expect(1).toBe(1);
   });
 
-  
+  //INTEGRATION TEST
   it('after login, navigate to the cram page', async () => {
    
     fetchMock.enableMocks();
 
-    const { getByPlaceholderText, getByTestId, getByText, findByText,  debug } = render(
+    const { 
+      getByPlaceholderText, 
+      getByTestId, 
+      getByText, 
+      findByText,
+      findByTestId, 
+      debug 
+    } = render(
       <MockedProvider >
         <AppWrapper />
       </MockedProvider>
@@ -66,27 +74,62 @@ describe('<App />', () => {
       fireEvent.changeText(password, 'world');
     })
 
-    //something to checkbefore navigation that changes after
-    expect(loginBtn).toBeTruthy();
-    act( () => {
+   
+    await act( () => {
       fireEvent.press(loginBtn);
     })
     await waitFor( () => {
-      const greetingMsg = findByText('need to cram');
-      debug()
+      const greetingMsg = findByText('Hi hello, what do you need to cram?');
+    })
+  })
+});
+
+  //INTEGRATION TEST
+  it('All important components should load in main page after login', async () => {
+   
+    fetchMock.enableMocks();
+
+    const { 
+      getByPlaceholderText, 
+      getByTestId, 
+      getByText, 
+      findByText,
+      findByTestId, 
+      debug 
+    } = render(
+      <MockedProvider >
+        <AppWrapper />
+      </MockedProvider>
+    );
+  
+  
+    // press login to use form
+    act(() => {
+      fireEvent.press(getByText('Log In'));
+    })
+    const loginBtn = getByTestId('arrow-btn');
+  
+    // fill out form and login
+    const username = getByPlaceholderText('Username');
+    const password = getByPlaceholderText('Password');
+    act( ()=> {
+      fireEvent.changeText(username, 'hello');
+      fireEvent.changeText(password, 'world');
     })
 
-  
-    // navigate to the next page "cram" (passes to cram then to main)
-    // check camera
-    // getByTestId('expo-camera');
-    // check take photo button
-    // check cram header
-    // check home button
-    // check logout button
-    // check greeting msg
-
-
+   
+    await act( () => {
+      fireEvent.press(loginBtn);
+    })
+    await waitFor( () => {
+      // this tests main.jsx layout after login
+      findByText('Hi hello, what do you need to cram?');
+      findByText('CRAM');
+      findByText('Home');
+      findByText('Logout');
+      findByTestId('take-picture-btn')
+      findByTestId('expo-camera');
+      const tree = renderer.create(<Camera />).toJSON()
+      expect(tree).toMatchSnapshot()
+    })
   })
-
-});

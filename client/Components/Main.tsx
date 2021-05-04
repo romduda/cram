@@ -53,6 +53,7 @@ export default function Main({ navigation, route }: any) {
         
        <Camera ref={(ref) => setCamera(ref)} style={styles.camera} type={type} testID="expo-camera">
           <TouchableOpacity
+            testID="camera-flip-btn"
             style={styles.flip}
             onPress={() => {
               setType(
@@ -72,7 +73,7 @@ export default function Main({ navigation, route }: any) {
           </View>
         </Camera>
       </View>
-      <TouchableOpacity style={styles.button} onPress={() => takePicture()}>
+      <TouchableOpacity style={styles.button} onPress={() => takePicture()} testID="take-picture-btn">
         <Ionicons
           name="radio-button-on-outline"
           color="white"
