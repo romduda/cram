@@ -5,7 +5,7 @@ import { Cram } from "./Components/Cram";
 import { Crammed } from "./Components/Crammed";
 import { NavigationContainer } from "@react-navigation/native";
 import { ApolloProvider } from "@apollo/client/react";
-// import { apolloClient } from "./Services/ApiService";
+import { apolloClient } from "./Services/ApiService";
 import Topic from "./Interfaces/Topic";
 import HeaderBtn from "./Components/HeaderBtn";
 
@@ -75,8 +75,8 @@ export function AppWrapper () {
 
 export default function App() {
   return (
-    // <ApolloProvider client={apolloClient}>
+    <ApolloProvider client={apolloClient}>
       <AppWrapper />
-    // </ApolloProvider>
+    </ApolloProvider>
   );
 }

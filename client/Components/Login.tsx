@@ -39,16 +39,14 @@ export default function Login({
         testID="arrow-btn"
         style={styles.btn}
         onPress={() => {
-          console.log('hey, just pressed');
           
           if (username && password) {
             setModalVisible(!modalVisible);
-            navigation.push("Cram", { paramA: username });
-            // setTimeout(() => setArrowVisible(!arrowVisible), 700);
-            // setTimeout(
-            //   () => navigation.push("Cram", { paramA: username }),
-            //   300
-            // );
+            setTimeout(() => setArrowVisible(!arrowVisible), 700);
+            setTimeout(
+              () => navigation.push("Cram", { paramA: username }),
+              300
+            );
           } else {
             return Alert.alert(
               "Incorrect username or password.",

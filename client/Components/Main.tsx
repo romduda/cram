@@ -26,8 +26,6 @@ export default function Main({ navigation, route }: any) {
 
   useEffect(() => {
     
-    console.log('main comp mount');
-    
     (async () => {
       const { status } = await Camera.requestPermissionsAsync();
       setHasPermission(status === "granted");
@@ -35,7 +33,6 @@ export default function Main({ navigation, route }: any) {
   }, []);
 
   const takePicture = async () => {
-    console.log('main camera takepicture');
     
     if (camera) {
       const picture = await camera.takePictureAsync();
@@ -44,15 +41,8 @@ export default function Main({ navigation, route }: any) {
     }
   };
 
-  //TODO DELETE
-  // if (hasPermission === null) {
-  //   console.log('main View being called to render');
-    
-  //   return <View />;
-  // }
 
   if (hasPermission === false) {
-    console.log('main View no access to render');
     return <Text>No access to camera</Text>;
   }
 
