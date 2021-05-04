@@ -103,6 +103,8 @@ export default function Main({ navigation, route }: any) {
               onPress={async () => {
                 setLoading(true);
                 const topic = await cramToApi(imageURI);
+            
+                
                 if (topic.title === "Error") {
                   return Alert.alert(
                     "No text found!",

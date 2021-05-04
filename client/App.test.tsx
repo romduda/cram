@@ -1,6 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import { render, fireEvent, waitFor, act } from '@testing-library/react-native';
+import { render, fireEvent, waitFor, act, cleanup } from '@testing-library/react-native';
 import { MockedProvider } from '@apollo/client/testing';
 import { Home } from './Components/Home'
 import { NavigationContainer } from '@react-navigation/native';
@@ -36,6 +36,7 @@ jest.mock('expo-camera', () => {
 
 
 describe('<App />', () => {
+  afterEach(cleanup);
 
   it('placeholder test', () => {
     expect(1).toBe(1);
