@@ -25,6 +25,7 @@ export default function Main({ navigation, route }: any) {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+    
     (async () => {
       const { status } = await Camera.requestPermissionsAsync();
       setHasPermission(status === "granted");
@@ -32,6 +33,7 @@ export default function Main({ navigation, route }: any) {
   }, []);
 
   const takePicture = async () => {
+    
     if (camera) {
       const picture = await camera.takePictureAsync();
       setImageURI(picture.uri);
@@ -39,18 +41,19 @@ export default function Main({ navigation, route }: any) {
     }
   };
 
-  if (hasPermission === null) {
-    return <View />;
-  }
+
   if (hasPermission === false) {
     return <Text>No access to camera</Text>;
   }
 
   return (
+    
     <View style={styles.bigContainer}>
       <View style={styles.container}>
-        <Camera ref={(ref) => setCamera(ref)} style={styles.camera} type={type}>
+        
+       <Camera ref={(ref) => setCamera(ref)} style={styles.camera} type={type} testID="expo-camera">
           <TouchableOpacity
+            testID="camera-flip-btn"
             style={styles.flip}
             onPress={() => {
               setType(
@@ -66,11 +69,11 @@ export default function Main({ navigation, route }: any) {
             <Text style={styles.imageText}>
               {" "}
               Hi {route.params.paramA}, what do you need to cram?{" "}
-            </Text>
+            </Text> 
           </View>
         </Camera>
       </View>
-      <TouchableOpacity style={styles.button} onPress={() => takePicture()}>
+      <TouchableOpacity style={styles.button} onPress={() => takePicture()} testID="take-picture-btn">
         <Ionicons
           name="radio-button-on-outline"
           color="white"

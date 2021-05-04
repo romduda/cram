@@ -9,7 +9,6 @@ const apolloClient = new ApolloClient({
 // ipconfig getifaddr en0
 
 const cramToApi = async function (imageURI: string): Promise<any> {
-  console.log("request made");
   const imgBase64 = await pathToBase64(imageURI);
   return apolloClient
     .query({
