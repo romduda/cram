@@ -6,8 +6,8 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "eject": "expo eject",
-    "test": "jest --verbose ",
-    "test:watch": "jest --watch "
+    "test": "jest --verbose",
+    "test:watch": "jest --watch"
   },
   "dependencies": {
     "@apollo/client": "^3.3.15",

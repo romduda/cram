@@ -1,8 +1,6 @@
 import React from "react";
 import { Crammed } from '../Crammed';
-import { render, cleanup, fireEvent, waitFor, act } from '@testing-library/react-native';
-import { MockedProvider } from "@apollo/client/testing";
-import { NavigationContainer } from '@react-navigation/native';
+import { render, cleanup, fireEvent, waitFor } from '@testing-library/react-native';
 
 
 const mockRoute = {
@@ -80,18 +78,14 @@ describe('Crammed page test suite on successful topic load', () => {
 
   it('crammed page loads correctly "Node" topic has been found ', () => {
     const { getByText, debug } = render(
-      <MockedProvider>
-        <Crammed route={mockRoute}/>
-      </MockedProvider>
+      <Crammed route={mockRoute}/>
     )
     getByText('Node');
   })
 
   it('Related topics Koa and Express are shown for Node Topic', () => {
     const { getByText, debug } = render(
-      <MockedProvider>
-        <Crammed route={mockRoute}/>
-      </MockedProvider>
+      <Crammed route={mockRoute}/>
     )
     getByText('Koa');
     getByText('Express');
@@ -99,9 +93,7 @@ describe('Crammed page test suite on successful topic load', () => {
 
   it('Cheatsheet and Related topics components have been rendered on page load', () => {
     const { getByTestId, debug } = render(
-      <MockedProvider>
-        <Crammed route={mockRoute}/>
-      </MockedProvider>
+      <Crammed route={mockRoute}/>
     )
     getByTestId('bullet-container')
     getByTestId('related-topics-container')
@@ -109,18 +101,14 @@ describe('Crammed page test suite on successful topic load', () => {
   
   it('Video component is rendered on page load', () => {
     const { getByTestId, debug } = render(
-      <MockedProvider>
-        <Crammed route={mockRoute} />
-      </MockedProvider>
+      <Crammed route={mockRoute} />
     )
     getByTestId('video-container')
   })
 
   it('Option to "Cram again" is available', () => {
     const { getByText, debug } = render(
-      <MockedProvider>
-        <Crammed route={mockRoute} />
-      </MockedProvider>
+      <Crammed route={mockRoute} />
     )
     getByText('Cram again?')
   })
@@ -133,18 +121,14 @@ describe('Crammed page test suite on unsuccessful topic load', () => {
   it('Not found page message loads successfully', () => {
 
     const { getByText, debug } = render(
-      <MockedProvider>
-        <Crammed route={notFound} />
-      </MockedProvider>
+      <Crammed route={notFound} />
     )
     getByText('Not Found');
   })
 
   it('Not found still gives the option to cram again', () => {
     const { getByText, debug } = render(
-      <MockedProvider>
-        <Crammed route={notFound} />
-      </MockedProvider>
+      <Crammed route={notFound} />
     )
     getByText('Cram again?');
   })
@@ -157,10 +141,8 @@ describe('Navigation from Crammed back to Cram', () => {
 
   it('Click the "Cram again?" button brings the user back to Cram page when Topic "Not Found"', async () => {
     const { getByTestId, debug } = render(
-      <NavigationContainer>
-        <Crammed route={notFound} navigation={fakeNavigation}/>
-      </NavigationContainer>
-    )
+      <Crammed route={notFound} navigation={fakeNavigation}/>
+      )
     const cramAgainBtn = getByTestId('cram-again-btn');
     fireEvent.press(cramAgainBtn);
     await waitFor(() => {
@@ -168,42 +150,30 @@ describe('Navigation from Crammed back to Cram', () => {
     })
   })
 
+  
   it('Click the "Cram again?" button brings the user back to Cram page when Topic exists', async () => {
     const { getByTestId, debug } = render(
-      <NavigationContainer>
-        <Crammed route={mockRoute} navigation={fakeNavigation}/>
-      </NavigationContainer>
+      <Crammed route={mockRoute} navigation={fakeNavigation}/>
     )
     const cramAgainBtn = getByTestId('cram-again-btn');
     fireEvent.press(cramAgainBtn);
-    await waitFor(() => {
+    await waitFor(()=>{
       expect(fakeNavigation.navigate).toBeCalledWith('Cram')
     })
   })
 })
 
-const pushNav = {
-  push: jest.fn()
-}
 
 describe('Navigation from Crammed to Further Topics', () => {
   afterEach(cleanup);
 
   it('Clicking a further topic navigates you to that topic', async () => {
-    const { getByText, getByTestId, debug } = render(
-      <MockedProvider>
-        <NavigationContainer>
-          <Crammed route={mockRoute} navigation={fakeNavigation}/>
-        </NavigationContainer>
-      </MockedProvider>
+    const { getByText, debug } = render(
+      <Crammed route={mockRoute} navigation={fakeNavigation}/>
     )
-
-  
     const cramAgainBtn = getByText('Koa');
-    // const cramAgainBtn = getByText('Koa');
     fireEvent.press(cramAgainBtn);
     await waitFor(()=> {
-
       expect(fakeNavigation.push).toBeCalledWith('Crammed', { paramC: mockRouteKoa.params.paramC})
     })
 
