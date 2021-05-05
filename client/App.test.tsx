@@ -34,12 +34,8 @@ jest.mock('expo-camera', () => {
   return expoCamera;
 });
 
-describe('<App />', () => {
+describe('Login', () => {
   afterEach(cleanup);
-
-  it('placeholder test', () => {
-    expect(1).toBe(1);
-  });
 
   //INTEGRATION TEST
   it('after login, navigate to the cram page and render important components', async () => {
