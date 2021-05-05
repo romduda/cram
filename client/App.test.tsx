@@ -76,11 +76,14 @@ describe('<App />', () => {
     })
 
    
+    //TODO Not working - to fix
     await act( () => {
       fireEvent.press(loginBtn);
     })
-    await waitFor( () => {
-      const greetingMsg = findByText('Hi hello, what do you need to cram?');
+    await waitFor( async () => {
+      const greetingMsg = await findByText('what do you need to cram?');
+      debug();
+      expect(greetingMsg).toBeTruthy();
     })
   })
 });

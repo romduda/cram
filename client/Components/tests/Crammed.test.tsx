@@ -19,6 +19,22 @@ const mockRoute = {
   }
 }
 
+const mockRouteKoa = {
+  params: {
+    paramC: {
+      bullets: [`const Koa = require('koa');`,
+      `const app = new Koa();`,
+      `app.use(ctx => {ctx.body = 'Hello World';});`,
+      `app.listen(3000, () => console.log('server started on port 3000'));`],
+      related: ['Node', 'Express'],
+      title: 'Koa',
+      url: 'https://www.youtube.com/watch?v=z84uTk5zmak',
+      id: "608ac3aa638930e38c852598"
+
+    }
+  }
+}
+
 const notFound = {
   params: {
     paramC: {
@@ -40,11 +56,22 @@ const notFound = {
 }
 
 jest.mock('../../Services/ApiService', () => {
-  return { furtherTopics: jest.fn() }
+  return { furtherTopics: jest.fn().mockReturnValue(new Promise((resolve, reject) => {
+    
+    resolve({bullets: [`const Koa = require('koa');`,
+    `const app = new Koa();`,
+    `app.use(ctx => {ctx.body = 'Hello World';});`,
+    `app.listen(3000, () => console.log('server started on port 3000'));`],
+    related: ['Node', 'Express'],
+    title: 'Koa',
+    url: 'https://www.youtube.com/watch?v=z84uTk5zmak',
+    id: "608ac3aa638930e38c852598"});
+  })) }
 })
 
 const fakeNavigation = {
   navigate: jest.fn(),
+  push: jest.fn()
 };
 
 describe('Crammed page test suite on successful topic load', () => {
@@ -153,4 +180,34 @@ describe('Navigation from Crammed back to Cram', () => {
       expect(fakeNavigation.navigate).toBeCalledWith('Cram')
     })
   })
+})
+
+const pushNav = {
+  push: jest.fn()
+}
+
+describe('Navigation from Crammed to Further Topics', () => {
+  afterEach(cleanup);
+
+  it('Clicking a further topic navigates you to that topic', async () => {
+    const { getByText, getByTestId, debug } = render(
+      <MockedProvider>
+        <NavigationContainer>
+          <Crammed route={mockRoute} navigation={fakeNavigation}/>
+        </NavigationContainer>
+      </MockedProvider>
+    )
+
+  
+    const cramAgainBtn = getByText('Koa');
+    // const cramAgainBtn = getByText('Koa');
+    fireEvent.press(cramAgainBtn);
+    await waitFor(()=> {
+
+      expect(fakeNavigation.push).toBeCalledWith('Crammed', { paramC: mockRouteKoa.params.paramC})
+    })
+
+  })
+
+
 })

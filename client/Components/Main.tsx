@@ -68,7 +68,8 @@ export default function Main({ navigation, route }: any) {
           <View style={styles.imageTextContainer}>
             <Text style={styles.imageText}>
               {" "}
-              Hi {route.params.paramA}, what do you need to cram?{" "}
+              Hi {route.params.paramA}, what do you need to cram?
+              {" "}
             </Text> 
           </View>
         </Camera>
