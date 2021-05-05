@@ -42,7 +42,7 @@ describe('<App />', () => {
   });
 
   //INTEGRATION TEST
-  it('after login, navigate to the cram page', async () => {
+  it('after login, navigate to the cram page and render important components', async () => {
     fetchMock.enableMocks();
 
     const {
@@ -72,14 +72,17 @@ describe('<App />', () => {
       fireEvent.changeText(password, 'world');
     });
 
-    //TODO Not working - to fix
-    await act(() => {
+    act(() => {
       fireEvent.press(loginBtn);
     });
     await waitFor(async () => {
-      const greetingMsg = await findByText('what do you need to cram?');
-      debug();
-      expect(greetingMsg).toBeTruthy();
+      // Not checking for "...what do you need to cram?" message since it's
+      // inside of Camera component which we're mocking
+      await findByText('Cram');
+      await findByText('Logout');
+      await findByText('Home');
+      await findByTestId('take-picture-btn');
+      await findByTestId('CRAM-button');
     });
   });
 });
