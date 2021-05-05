@@ -1,0 +1,23 @@
+{
+  "name": "cram",
+  "version": "1.0.0",
+  "description": "GCSE Revision tool",
+  "main": "index.js",
+  "devDependencies": {
+    "cypress": "^7.2.0"
+  },
+  "scripts": {
+    "test": "cypress run",
+    "cypress:open": "cypress open"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/romduda/cram.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/romduda/cram/issues"
+  },
+  "homepage": "https://github.com/romduda/cram#readme"
+}
