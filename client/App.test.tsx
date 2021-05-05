@@ -1,15 +1,19 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import { render, fireEvent, waitFor, act, cleanup } from '@testing-library/react-native';
+import {
+  render,
+  fireEvent,
+  waitFor,
+  act,
+  cleanup,
+} from '@testing-library/react-native';
 import { MockedProvider } from '@apollo/client/testing';
-import { Home } from './Components/Home'
+import { Home } from './Components/Home';
 import { NavigationContainer } from '@react-navigation/native';
 import fetchMock from 'jest-fetch-mock';
 import 'react-native-gesture-handler/jestSetup';
 import { AppWrapper } from './App';
-import { Camera } from "expo-camera";
-
-
+import { Camera } from 'expo-camera';
 
 //Warnings for animations
 jest.mock('react-native/Libraries/Animated/src/NativeAnimatedHelper');
@@ -24,16 +28,13 @@ jest.mock('react-native-reanimated', () => {
   return Reanimated;
 });
 
-
 jest.mock('expo-camera', () => {
   const expoCamera: any = jest.createMockFromModule('expo-camera');
-  expoCamera.Camera.requestPermissionsAsync = jest.fn().mockResolvedValue(
-      { status: 'granted' }
-  )
+  expoCamera.Camera.requestPermissionsAsync = jest
+    .fn()
+    .mockResolvedValue({ status: 'granted' });
   return expoCamera;
-})
-
-
+});
 
 describe('<App />', () => {
   afterEach(cleanup);
@@ -44,96 +45,90 @@ describe('<App />', () => {
 
   //INTEGRATION TEST
   it('after login, navigate to the cram page', async () => {
-   
     fetchMock.enableMocks();
 
-    const { 
-      getByPlaceholderText, 
-      getByTestId, 
-      getByText, 
+    const {
+      getByPlaceholderText,
+      getByTestId,
+      getByText,
       findByText,
-      findByTestId, 
-      debug 
+      findByTestId,
+      debug,
     } = render(
-      <MockedProvider >
+      <MockedProvider>
         <AppWrapper />
       </MockedProvider>
     );
-  
-  
+
     // press login to use form
     act(() => {
       fireEvent.press(getByText('Log In'));
-    })
+    });
     const loginBtn = getByTestId('arrow-btn');
-  
+
     // fill out form and login
     const username = getByPlaceholderText('Username');
     const password = getByPlaceholderText('Password');
-    act( ()=> {
+    act(() => {
       fireEvent.changeText(username, 'hello');
       fireEvent.changeText(password, 'world');
-    })
+    });
 
-   
     //TODO Not working - to fix
-    await act( () => {
+    await act(() => {
       fireEvent.press(loginBtn);
-    })
-    await waitFor( async () => {
+    });
+    await waitFor(async () => {
       const greetingMsg = await findByText('what do you need to cram?');
       debug();
       expect(greetingMsg).toBeTruthy();
-    })
-  })
+    });
+  });
 });
 
-  //INTEGRATION TEST
-  it('All important components should load in main page after login', async () => {
-   
-    fetchMock.enableMocks();
+//INTEGRATION TEST
+it('All important components should load in main page after login', async () => {
+  fetchMock.enableMocks();
 
-    const { 
-      getByPlaceholderText, 
-      getByTestId, 
-      getByText, 
-      findByText,
-      findByTestId, 
-      debug 
-    } = render(
-      <MockedProvider >
-        <AppWrapper />
-      </MockedProvider>
-    );
-  
-  
-    // press login to use form
-    act(() => {
-      fireEvent.press(getByText('Log In'));
-    })
-    const loginBtn = getByTestId('arrow-btn');
-  
-    // fill out form and login
-    const username = getByPlaceholderText('Username');
-    const password = getByPlaceholderText('Password');
-    act( ()=> {
-      fireEvent.changeText(username, 'hello');
-      fireEvent.changeText(password, 'world');
-    })
+  const {
+    getByPlaceholderText,
+    getByTestId,
+    getByText,
+    findByText,
+    findByTestId,
+    debug,
+  } = render(
+    <MockedProvider>
+      <AppWrapper />
+    </MockedProvider>
+  );
 
-   
-    await act( () => {
-      fireEvent.press(loginBtn);
-    })
-    await waitFor( () => {
-      // this tests main.jsx layout after login
-      findByText('Hi hello, what do you need to cram?');
-      findByText('CRAM');
-      findByText('Home');
-      findByText('Logout');
-      findByTestId('take-picture-btn')
-      findByTestId('expo-camera');
-      const tree = renderer.create(<Camera />).toJSON()
-      expect(tree).toMatchSnapshot()
-    })
-  })
+  // press login to use form
+  act(() => {
+    fireEvent.press(getByText('Log In'));
+  });
+  const loginBtn = getByTestId('arrow-btn');
+
+  // fill out form and login
+  const username = getByPlaceholderText('Username');
+  const password = getByPlaceholderText('Password');
+  act(() => {
+    fireEvent.changeText(username, 'hello');
+    fireEvent.changeText(password, 'world');
+  });
+
+  await act(() => {
+    fireEvent.press(loginBtn);
+  });
+  await waitFor(() => {
+    // this tests main.jsx layout after login
+    findByText('Hi hello, what do you need to cram?');
+    findByText('CRAM');
+    findByText('Home');
+    findByText('Logout');
+    findByTestId('take-picture-btn');
+    findByTestId('expo-camera');
+    const tree = renderer.create(<Camera />).toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+});
