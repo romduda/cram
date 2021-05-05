@@ -1,5 +1,5 @@
 // import magic from '../magic';
-const magicObj = require('../magic');
+const magicObj = require('../magic.ts');
 const magic = magicObj.default;
 
 const { loremIpsum } = require('./mocks');
