@@ -8,8 +8,6 @@ import {
   cleanup,
 } from '@testing-library/react-native';
 import { MockedProvider } from '@apollo/client/testing';
-import { Home } from './Components/Home';
-import { NavigationContainer } from '@react-navigation/native';
 import fetchMock from 'jest-fetch-mock';
 import 'react-native-gesture-handler/jestSetup';
 import { AppWrapper } from './App';
