@@ -1,8 +1,11 @@
-import { ApolloClient, InMemoryCache, gql } from "@apollo/client";
-import pathToBase64 from "./ImageService";
+import { ApolloClient, InMemoryCache, gql } from '@apollo/client';
+import pathToBase64 from './ImageService';
+
+const APOLLOCLIENT_HOST = process.env.APOLLOCLIENT_HOST;
+const APOLLOCLIENT_PORT = process.env.APOLLOCLIENT_PORT;
 
 const apolloClient = new ApolloClient({
-  uri: "http://192.168.0.12:4000/",
+  uri: `http://${APOLLOCLIENT_HOST}:${APOLLOCLIENT_PORT}/`,
   cache: new InMemoryCache(),
 });
 
@@ -22,7 +25,7 @@ const cramToApi = async function (imageURI: string): Promise<any> {
         }
       }
     `,
-      fetchPolicy: "network-only",
+      fetchPolicy: 'network-only',
     })
     .then((result) => result.data.topics[0])
     .catch((err) => console.error(err));
@@ -41,7 +44,7 @@ const furtherTopics = async function (title: string): Promise<any> {
         }
       }
     `,
-      fetchPolicy: "network-only",
+      fetchPolicy: 'network-only',
     })
     .then((result) => result.data.furtherTopics[0])
     .catch((err) => console.error(err));
