@@ -4,7 +4,6 @@ import { render, fireEvent } from '@testing-library/react-native';
 import { MockedProvider } from '@apollo/client/testing';
 import { Home } from '../Home';
 
-
 it('there is a button with "Log In" on home page', () => {
   // arrange
   const { getByText } = render(
@@ -19,7 +18,6 @@ it('there is a button with "Log In" on home page', () => {
   // assert
 });
 
-
 it('there is a video component on the home page', () => {
   const { getByTestId } = render(
     <MockedProvider>
@@ -27,7 +25,7 @@ it('there is a video component on the home page', () => {
     </MockedProvider>
   );
   getByTestId('background-video');
-})
+});
 
 it('log in button says "Log In" before press, and shows arrow icon after press', () => {
   const { getByText, getByTestId, debug } = render(
@@ -41,9 +39,6 @@ it('log in button says "Log In" before press, and shows arrow icon after press',
   expect(() => getByText('Log In')).toThrow();
   getByTestId('arrow-icon');
 });
-
-
-
 
 // const video = require('./video');
 
