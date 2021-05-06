@@ -7,7 +7,7 @@
     "cypress": "^7.2.0"
   },
   "scripts": {
-    "install": "npm i . && cd ./client && npm i . && cd ../server && npm i .",
+    "install": "cd ./client && npm i . && cd ../server && npm i .",
     "test": "cd ./client && npm test && cd ../server && npm test",
     "cypress:open": "cypress open",
     "test:cypress": "cypress run"
