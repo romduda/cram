@@ -108,3 +108,5 @@ server/src/apiKey.json
 
 cypress/videos
 cypress/screenshots
+
+.expo/
