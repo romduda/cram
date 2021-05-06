@@ -1,5 +1,4 @@
 module.exports = function (api) {
-  console.log('babel.config.js called');
   api.cache(true);
   return {
     presets: ["babel-preset-expo"],
