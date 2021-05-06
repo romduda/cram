@@ -9,15 +9,7 @@ module.exports = function (api) {
         }]]
       }
     }
-    // transform: {
-      // "^.+\\.js$": "<rootDir>/node_modules/react-native/jest/preprocessor.js",
-    //   "^.+\\.tsx?$": "ts-jest",
-      // "^.+\\.[jt]sx?$": "babel-jest",
-    }
-  //   env: {
-  //     "test": {
-  //       "plugins": ["@babel/plugin-transform-modules-commonjs"]
-  //     }
+  }
 };
 
 
