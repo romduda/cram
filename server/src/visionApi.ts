@@ -12,6 +12,7 @@ async function visionApi(url: string): Promise<string | null | undefined> {
   };
 
   const [result] = await client.textDetection(request);
+  console.log('result', result);
   const googleStr = result.fullTextAnnotation?.text;
 
   return googleStr;

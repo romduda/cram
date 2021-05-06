@@ -8,6 +8,8 @@ export const resolvers = {
       const { input } = args;
       const googleStr = await visionApi(input.title);
 
+      // TODO: Wrap Topic.find in a try catch
+      // TODO: Also check if typeof googleStr === 'string'
       if (!googleStr) return await Topic.find({ title: "Error" }).exec();
 
       const topicTitle = magic(googleStr);

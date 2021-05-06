@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
 import {
   StyleSheet,
   Text,
@@ -7,19 +7,19 @@ import {
   Alert,
   ImageBackground,
   TouchableOpacity,
-} from "react-native";
-import { Ionicons } from "@expo/vector-icons";
-import Spinner from "react-native-loading-spinner-overlay";
-import { Camera } from "expo-camera";
-import { cramToApi } from "../Services/ApiService";
-import Topic from "../Interfaces/Topic";
-import CustomText from "./CustomText";
+} from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
+import Spinner from 'react-native-loading-spinner-overlay';
+import { Camera } from 'expo-camera';
+import { cramToApi } from '../Services/ApiService';
+import Topic from '../Interfaces/Topic';
+import CustomText from './CustomText';
 
 export default function Main({ navigation, route }: any) {
   const [hasPermission, setHasPermission] = useState(false);
   const [camera, setCamera] = useState<Camera | null>(null);
-  const [imageURI, setImageURI] = useState("");
-  const [modalVisible, setModelVisible] = useState(false);
+  const [imageURI, setImageURI] = useState('');
+  const [modalVisible, setModalVisible] = useState(false);
   const [type, setType] = useState(Camera.Constants.Type.back);
   const [topic, setTopic] = useState<Topic | null>(null);
   const [loading, setLoading] = useState(false);
@@ -27,7 +27,7 @@ export default function Main({ navigation, route }: any) {
   useEffect(() => {
     (async () => {
       const { status } = await Camera.requestPermissionsAsync();
-      setHasPermission(status === "granted");
+      setHasPermission(status === 'granted');
     })();
   }, []);
 
@@ -35,13 +35,10 @@ export default function Main({ navigation, route }: any) {
     if (camera) {
       const picture = await camera.takePictureAsync();
       setImageURI(picture.uri);
-      setModelVisible(true);
+      setModalVisible(true);
     }
   };
 
-  if (hasPermission === null) {
-    return <View />;
-  }
   if (hasPermission === false) {
     return <Text>No access to camera</Text>;
   }
@@ -49,8 +46,14 @@ export default function Main({ navigation, route }: any) {
   return (
     <View style={styles.bigContainer}>
       <View style={styles.container}>
-        <Camera ref={(ref) => setCamera(ref)} style={styles.camera} type={type}>
+        <Camera
+          ref={(ref) => setCamera(ref)}
+          style={styles.camera}
+          type={type}
+          testID="expo-camera"
+        >
           <TouchableOpacity
+            testID="camera-flip-btn"
             style={styles.flip}
             onPress={() => {
               setType(
@@ -64,13 +67,17 @@ export default function Main({ navigation, route }: any) {
           </TouchableOpacity>
           <View style={styles.imageTextContainer}>
             <Text style={styles.imageText}>
-              {" "}
-              Hi {route.params.paramA}, what do you need to cram?{" "}
+              {' '}
+              Hi {route.params.paramA}, what do you need to cram?{' '}
             </Text>
           </View>
         </Camera>
       </View>
-      <TouchableOpacity style={styles.button} onPress={() => takePicture()}>
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => takePicture()}
+        testID="take-picture-btn"
+      >
         <Ionicons
           name="radio-button-on-outline"
           color="white"
@@ -81,36 +88,37 @@ export default function Main({ navigation, route }: any) {
         <View style={styles.imageModal}>
           <Spinner
             visible={loading}
-            textContent={"Scanning..."}
+            textContent={'Scanning...'}
             textStyle={styles.spinnerTextStyle}
           />
           <View style={styles.imageContainer}>
             <ImageBackground source={{ uri: imageURI }} style={styles.image}>
               <TouchableOpacity
-                onPress={() => setModelVisible(false)}
+                onPress={() => setModalVisible(false)}
                 style={styles.cancelContainer}
               >
                 <Ionicons name="ios-close" color="white" size={32} />
               </TouchableOpacity>
             </ImageBackground>
           </View>
-          <View style={styles.buttonContainer}>
+          <View testID="CRAM-button" style={styles.buttonContainer}>
             <TouchableOpacity
               style={styles.cramButton}
               onPress={async () => {
                 setLoading(true);
                 const topic = await cramToApi(imageURI);
-                if (topic.title === "Error") {
+
+                if (topic.title === 'Error') {
                   return Alert.alert(
-                    "No text found!",
-                    "Try taking another photo.",
-                    [{ text: "OK", onPress: () => setLoading(false) }],
+                    'No text found!',
+                    'Try taking another photo.',
+                    [{ text: 'OK', onPress: () => setLoading(false) }],
                     { cancelable: false }
                   );
                 }
                 setTopic(topic);
-                setModelVisible(false);
-                navigation.push("Crammed", { paramC: topic });
+                setModalVisible(false);
+                navigation.push('Crammed', { paramC: topic });
                 return setLoading(false);
               }}
             >
@@ -126,29 +134,29 @@ export default function Main({ navigation, route }: any) {
 const styles = StyleSheet.create({
   bigContainer: {
     flex: 1,
-    alignItems: "center",
-    backgroundColor: "#1F1F1F",
+    alignItems: 'center',
+    backgroundColor: '#1F1F1F',
   },
   container: {
     flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
+    alignItems: 'center',
+    justifyContent: 'center',
     borderRadius: 5,
     margin: 30,
     borderWidth: 1,
     height: 140,
     width: 300,
-    overflow: "hidden",
+    overflow: 'hidden',
   },
   camera: {
-    width: "100%",
-    height: "100%",
-    display: "flex",
-    justifyContent: "space-between",
+    width: '100%',
+    height: '100%',
+    display: 'flex',
+    justifyContent: 'space-between',
     flex: 1,
   },
   buttonContainer: {
-    width: "79%",
+    width: '79%',
     marginBottom: 30,
   },
   cramButton: {
@@ -156,57 +164,57 @@ const styles = StyleSheet.create({
     height: 50,
   },
   cancelContainer: {
-    display: "flex",
-    flexDirection: "row",
+    display: 'flex',
+    flexDirection: 'row',
     padding: 10,
   },
   imageTextContainer: {
-    width: "100%",
+    width: '100%',
     height: 70,
   },
   imageText: {
-    textAlign: "center",
-    color: "white",
+    textAlign: 'center',
+    color: 'white',
     fontSize: 22,
-    fontFamily: "Optima-Bold",
+    fontFamily: 'Optima-Bold',
   },
   flip: {
-    display: "flex",
-    flexDirection: "row",
+    display: 'flex',
+    flexDirection: 'row',
     padding: 10,
   },
   button: {
     width: 300,
     paddingBottom: 15,
-    display: "flex",
-    alignItems: "center",
+    display: 'flex',
+    alignItems: 'center',
   },
   imageModal: {
     flex: 1,
-    backgroundColor: "#1F1F1F",
+    backgroundColor: '#1F1F1F',
     paddingVertical: 20,
-    display: "flex",
-    alignItems: "center",
+    display: 'flex',
+    alignItems: 'center',
   },
   imageContainer: {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
     flex: 1,
-    width: "79%",
+    width: '79%',
     marginTop: 75,
     marginBottom: 25,
     borderRadius: 5,
-    overflow: "hidden",
+    overflow: 'hidden',
   },
   image: {
-    width: "100%",
-    height: "100%",
+    width: '100%',
+    height: '100%',
     flex: 1,
     borderRadius: 5,
   },
   spinnerTextStyle: {
-    color: "white",
-    fontWeight: "200",
+    color: 'white',
+    fontWeight: '200',
   },
 });

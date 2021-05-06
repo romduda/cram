@@ -1,4 +1,5 @@
-const magic = function (str: string): { title: string } {
+ const magic = function (str: string): { title: string } {
+  if (typeof str !== 'string') return { title: '' };
   const topicTitles: Array<string> = [
     "Koa",
     "Node",

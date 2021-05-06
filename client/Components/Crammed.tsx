@@ -23,18 +23,19 @@ export const Crammed: any = ({ route, navigation }: any) => {
           }
         >
           <Text style={styles.videoTitle}>{topic.title}</Text>
-          {topic.title === "Not Found" ? (
+          {topic.title && topic.title === "Not Found" 
+            ? (
             <View>
               <Text>{topic.url}</Text>
             </View>
           ) : (
-            <View style={styles.found}>
+            <View style={styles.found} testID="video-container">
               <WebView source={{ uri: topic.url }} style={styles.webview} />
             </View>
           )}
-          <View style={styles.bulletContainer}>
+          <View style={styles.bulletContainer} testID="bullet-container">
             <Text style={styles.tips}>Cheatsheet</Text>
-            {topic.bullets.map((bullet: string) => {
+            {topic.title && topic.bullets.map((bullet: string) => {
               return (
                 <View key={bullet} style={styles.bullet}>
                   <Text style={styles.bulletText}>
@@ -55,7 +56,7 @@ export const Crammed: any = ({ route, navigation }: any) => {
           >
             Related Topics
           </Text>
-          <View style={styles.relatedContainer}>
+          <View style={styles.relatedContainer} testID="related-topics-container">
             {topic.related.map((relatedTopic: string) => {
               return (
                 <TouchableOpacity
@@ -76,6 +77,7 @@ export const Crammed: any = ({ route, navigation }: any) => {
         </View>
       </ScrollView>
       <TouchableOpacity
+        testID='cram-again-btn'
         style={styles.againBtn}
         onPress={() => {
           setTimeout(() => {

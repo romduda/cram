@@ -6,6 +6,7 @@ export default function HeaderBtn() {
   const navigation = useNavigation();
   return (
     <TouchableOpacity
+      testID='logout-btn'
       style={styles.logOutBtn}
       onPress={() => {
         navigation.navigate("Home");

@@ -103,4 +103,10 @@ dist
 # TernJS port file
 .tern-port
 
+# Custom
 server/src/apiKey.json
+
+cypress/videos
+cypress/screenshots
+
+.expo/

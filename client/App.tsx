@@ -9,6 +9,7 @@ import { apolloClient } from "./Services/ApiService";
 import Topic from "./Interfaces/Topic";
 import HeaderBtn from "./Components/HeaderBtn";
 
+
 type RootParamList = {
   Home: { paramA: string };
   Cram: { paramB: string };
@@ -17,10 +18,10 @@ type RootParamList = {
 
 const Root = createStackNavigator<RootParamList>();
 
-export default function App() {
+
+export function AppWrapper () {
   return (
-    <ApolloProvider client={apolloClient}>
-      <NavigationContainer>
+    <NavigationContainer>
         <Root.Navigator initialRouteName="Home">
           <Root.Screen
             name="Home"
@@ -69,6 +70,13 @@ export default function App() {
           />
         </Root.Navigator>
       </NavigationContainer>
+  );
+};
+
+export default function App() {
+  return (
+    <ApolloProvider client={apolloClient}>
+      <AppWrapper />
     </ApolloProvider>
   );
 }

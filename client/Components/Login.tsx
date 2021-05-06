@@ -36,8 +36,10 @@ export default function Login({
         />
       </View>
       <TouchableOpacity
+        testID="arrow-btn"
         style={styles.btn}
         onPress={() => {
+          
           if (username && password) {
             setModalVisible(!modalVisible);
             setTimeout(() => setArrowVisible(!arrowVisible), 700);

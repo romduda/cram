@@ -18,6 +18,7 @@ export const Home = ({ navigation }: any) => {
         isLooping={true}
         volume={0}
         resizeMode="cover"
+        testID="background-video"
       />
       <Text style={styles.home}>CRAM</Text>
       <TouchableOpacity
@@ -26,14 +27,18 @@ export const Home = ({ navigation }: any) => {
           setArrowVisible(!arrowVisible);
           return setModalVisible(!modalVisible);
         }}
+        
       >
         <CustomText>
           {arrowVisible ? (
-            <Ionicons
-              name="arrow-forward-outline"
-              size={25}
-              style={{ flex: 1 }}
-            ></Ionicons>
+            <Text testID="arrow-icon">
+              <Ionicons
+                name="arrow-forward-outline"
+                size={25}
+                style={{ flex: 1 }}
+              >
+              </Ionicons>
+            </Text>
           ) : (
             "Log In"
           )}
@@ -45,6 +50,7 @@ export const Home = ({ navigation }: any) => {
           animationType="slide"
           transparent={true}
           visible={modalVisible}
+          testID="modal-login"
         >
           <Login
             navigation={navigation}
