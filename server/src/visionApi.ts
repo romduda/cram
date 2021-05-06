@@ -1,18 +1,17 @@
-import vision from "@google-cloud/vision";
+import vision from '@google-cloud/vision';
 
 async function visionApi(url: string): Promise<string | null | undefined> {
   const client = new vision.ImageAnnotatorClient({
-    keyFilename: "src/apiKey.json",
+    keyFilename: 'src/apiKey.json',
   });
 
   const request = {
     image: {
-      content: Buffer.from(url, "base64"),
+      content: Buffer.from(url, 'base64'),
     },
   };
 
   const [result] = await client.textDetection(request);
-  console.log('result', result);
   const googleStr = result.fullTextAnnotation?.text;
 
   return googleStr;
